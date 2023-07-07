@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour {
         GameController.totalPixel = 0;
         GenerateMap(map);
         parentObject.transform.position = originalPos;
-        parentObject.transform.localScale = Vector3.one * (15 / width);
+        parentObject.transform.localScale = Vector3.one * (70 / width);
     }
 
     private void GenerateMap(Texture2D texture)
@@ -64,7 +64,7 @@ public class LevelGenerator : MonoBehaviour {
         instance.transform.SetParent(currentParent);
         Color pixelColor = texture.GetPixel(x, y);
         Vector3 pos = new Vector3(x - texture.width / 2, 0, y) * ratio;
-        Vector3 scale = Vector3.one * ratio;
+        Vector3 scale = Vector3.one * ratio * 0.7f;
 
         if (pixelColor.a == 0 || pixelColor == null)
         {
