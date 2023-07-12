@@ -12,28 +12,28 @@ public class Hole : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("Player").GetComponent<GameController>();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Pixel") && other.transform.childCount > 0)
-        {
-            other.GetComponent<Tile>().isCheck = true;
-            other.GetComponent<Tile>().isMagnet = true;
-            other.transform.parent = null;
-            gameController.pixels.Remove(other.GetComponent<Rigidbody>());
-            other.GetComponent<SphereCollider>().isTrigger = true;
-            other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            other.transform.DOKill();
-            other.transform.DOMove(transform.position, 0.5f);
-            other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            Explode(other.gameObject);
-        }
-        else if (other.CompareTag("Pixel"))
-        {
-            other.GetComponent<BoxCollider>().isTrigger = true;
-            other.transform.DOKill();
-            other.transform.DOMove(new Vector3(other.transform.position.x, other.transform.position.y  - 5, other.transform.position.z), 0.5f);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Pixel") && other.transform.childCount > 0)
+    //    {
+    //        other.GetComponent<Tile>().isCheck = true;
+    //        other.GetComponent<Tile>().isMagnet = true;
+    //        other.transform.parent = null;
+    //        gameController.pixels.Remove(other.GetComponent<Rigidbody>());
+    //        other.GetComponent<SphereCollider>().isTrigger = true;
+    //        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    //        other.transform.DOKill();
+    //        other.transform.DOMove(transform.position, 0.5f);
+    //        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    //        Explode(other.gameObject);
+    //    }
+    //    else if (other.CompareTag("Pixel"))
+    //    {
+    //        other.GetComponent<BoxCollider>().isTrigger = true;
+    //        other.transform.DOKill();
+    //        other.transform.DOMove(new Vector3(other.transform.position.x, other.transform.position.y  - 5, other.transform.position.z), 0.5f);
+    //    }
+    //}
 
     void Explode(GameObject other)
     {

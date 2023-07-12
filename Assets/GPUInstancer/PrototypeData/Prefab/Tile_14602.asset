@@ -80,10 +80,10 @@ MonoBehaviour:
   hasRigidBody: 1
   rigidbodyData:
     useGravity: 1
-    angularDrag: 1
+    angularDrag: 0.5
     mass: 1
     constraints: 0
-    drag: 10
+    drag: 4
     isKinematic: 0
     interpolation: 0
   meshRenderersDisabled: 0

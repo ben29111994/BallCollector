@@ -5,7 +5,8 @@ public class LevelGenerator : MonoBehaviour {
 
     public static LevelGenerator instance;
     public List<Texture2D> list2DMaps = new List<Texture2D>();
-	public Texture2D map;
+    public List<Color32> listColors = new List<Color32>();
+    public Texture2D map;
     public Tile tilePrefab;
     public GameObject parentObject;
     public int numOfStacks;
@@ -23,7 +24,7 @@ public class LevelGenerator : MonoBehaviour {
         GameController.totalPixel = 0;
         GenerateMap(map);
         parentObject.transform.position = originalPos;
-        parentObject.transform.localScale = Vector3.one * (70 / width);
+        parentObject.transform.localScale = Vector3.one * (200 / width);
     }
 
     private void GenerateMap(Texture2D texture)
@@ -59,12 +60,26 @@ public class LevelGenerator : MonoBehaviour {
 
     private void GenerateTile(Texture2D texture, int x, int y, float ratio)
     {
+        Color pixelColor = texture.GetPixel(x, y);
+        if (pixelColor == new Color32(255, 255, 255, 255))
+            return;
+        if (!listColors.Contains(pixelColor))
+        {
+            if (listColors.Count < 8)
+                listColors.Add(pixelColor);
+            else
+                return;
+        }
+
+        var level = listColors.IndexOf(pixelColor);
         Tile instance;
         instance = Instantiate(tilePrefab);
         instance.transform.SetParent(currentParent);
-        Color pixelColor = texture.GetPixel(x, y);
         Vector3 pos = new Vector3(x - texture.width / 2, 0, y) * ratio;
-        Vector3 scale = Vector3.one * ratio * 0.7f;
+        //var sizeValue = Random.Range(0.5f, 1);
+        //var sizeValue = (level + 1) * 3;
+        //Vector3 scale = Vector3.one * ratio * sizeValue * 0.1f;
+        Vector3 scale = Vector3.one * Mathf.Pow(1.5f, level) / 8;
 
         if (pixelColor.a == 0 || pixelColor == null)
         {
@@ -74,6 +89,7 @@ public class LevelGenerator : MonoBehaviour {
         }
         else
         {
+            //instance.GetComponent<Rigidbody>().drag += 5 * sizeValue;
             GameController.totalPixel++;
         }
 

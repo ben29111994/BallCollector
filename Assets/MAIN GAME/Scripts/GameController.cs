@@ -32,6 +32,8 @@ public class GameController : MonoBehaviour
     float meshHeight;
     float count;
     bool isBuild = false;
+    public float CameraOffsetY = 20, CameraOffsetZ = -42;
+
 
     [Header("UI")]
     public GameObject winPanel;
@@ -69,6 +71,8 @@ public class GameController : MonoBehaviour
         Application.targetFrameRate = 60;
         instance = this;
         rigid = GetComponent<Rigidbody>();
+        CameraOffsetY = Camera.main.transform.position.y;
+        CameraOffsetZ = 12;
         StartCoroutine(delayRefreshInstancer());
         StartCoroutine(delayStart());
     }
@@ -94,32 +98,49 @@ public class GameController : MonoBehaviour
         if (isStartGame)
         {
             Control();
+            //if (pixels.Count > 100)
+            //{
+            //    var pixel = pixels[0];
+            //    //pixels.Remove(pixels[50]);
+            //    //pixels.TrimExcess();
+            //    try
+            //    {
+            //        AddRemoveInstances.instance.RemoveInstances(pixel.GetComponent<GPUInstancerPrefab>());
+            //    }
+            //    catch { }
+            //}
             for (int i = 0; i < pixels.Count; i++)
             {
-                if (pixels[i] != null /*&& pixels[i].GetComponent<Tile>().isMagnet*/)
+                if (pixels[i] != null && pixels[i].GetComponent<Tile>().isCheck)
                 {
                     Vector3 magnetField = magnetPoint.position - pixels[i].position;
                     var dis = Vector3.Distance(magnetPoint.position, pixels[i].position);
-                    var disX = Mathf.Abs(magnetPoint.position.x - pixels[i].position.x);
-                    if (disX <= 1.5f)
+                    float distance = Vector3.Distance(magnetPoint.transform.position, pixels[i].transform.position);
+                    if (distance <= 2f)
                     {
-                        if (dis <= 5 && !pixels[i].GetComponent<Tile>().isMagnet && !pixels[i].GetComponent<Tile>().isCheck)
-                        {
-                            pixels[i].GetComponent<Tile>().isMagnet = true;
-                            pixels[i].transform.parent = transform;
-                        }
-                        pixels[i].AddForce(magnetField * forceFactor * 2 * Time.fixedDeltaTime);
+                        //if (dis <= 10 && !pixels[i].GetComponent<Tile>().isMagnet)
+                        //    {
+                        //        pixels[i].GetComponent<Tile>().isMagnet = true;
+                        //        pixels[i].transform.parent = funnel.transform;
+                        //    }
+                        pixels[i].AddForce(magnetField * forceFactor * Time.fixedDeltaTime);
                     }
                     else
                     {
-                        magnetField = new Vector3(magnetField.x, 0, magnetField.z);
-                        pixels[i].AddForce(magnetField * forceFactor / disX * Time.fixedDeltaTime);
+                        if (pixels[i].transform.localScale.x < transform.localScale.x / 5 || forceFactor > 7500)
+                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
+                        else
+                        {
+                            magnetField = new Vector3(magnetField.x, 0, magnetField.z);
+                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
+                        }
+
                     }
                 }
-                else
-                {
-                    break;
-                }
+                //else
+                //{
+                //    break;
+                //}
             }
         }
     }
@@ -134,7 +155,9 @@ public class GameController : MonoBehaviour
 
     private void Control()
     {
-        if(Input.GetMouseButtonDown(0))
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(transform.position.x, CameraOffsetY, transform.position.z - CameraOffsetZ), Time.deltaTime * 30);
+
+        if (Input.GetMouseButtonDown(0))
         {
             isHold = true;
         }
@@ -164,7 +187,7 @@ public class GameController : MonoBehaviour
                 //transform.rotation = Quaternion.LookRotation(dir);
             }
             transform.Translate(Vector3.forward * Time.deltaTime * (speed + Mathf.Abs(h) * 2 + Mathf.Abs(v) * 2));
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(transform.position.x, 20, transform.position.z - 12), Time.deltaTime * 30);
+            //rigid.velocity = dir * 100 * Time.deltaTime;
             //funnel.transform.position = Vector3.MoveTowards(funnel.transform.position, new Vector3(funnel.transform.position.x + h, funnel.transform.position.y, funnel.transform.position.z + v), speed * Time.deltaTime);
         }
         //transform.position = new Vector3(Mathf.Clamp(transform.position.x, -11f, 11f), transform.position.y, Mathf.Clamp(transform.position.z, -4f, 49));
@@ -346,115 +369,47 @@ public class GameController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pixel") && !other.GetComponent<Tile>().isCheck && isStartGame /*&& !other.GetComponent<Tile>().isMagnet*/)
+        if (other.gameObject.CompareTag("Pixel") && !other.GetComponent<Tile>().isCheck && isStartGame && !other.GetComponent<Tile>().isMagnet)
         {
-            //if (other.transform.childCount > 0)
-            //{
-                if(pixels.Count > 100)
-                {
-                    pixels.RemoveAt(50);
-                    AddRemoveInstances.instance.RemoveInstances(pixels[50].GetComponent<GPUInstancerPrefab>());
-                    pixels.TrimExcess();
-                }
-                if (!UnityEngine.iOS.Device.generation.ToString().Contains("5") && !isVibrate)
+            pixels.RemoveAll(item => item == null);
+            if (!UnityEngine.iOS.Device.generation.ToString().Contains("5") && !isVibrate)
                 {
                     isVibrate = true;
                     StartCoroutine(delayVibrate());
                     MMVibrationManager.Haptic(HapticTypes.LightImpact);
                 }
-                //other.GetComponent<Tile>().isCheck = true;
-                other.transform.parent = null;
-                other.GetComponent<Rigidbody>().isKinematic = false;
-            if (other.transform.childCount == 0)
-            {
-                other.GetComponent<SphereCollider>().isTrigger = false;
-                if (other != null)
-                {
-                    //other.transform.DOKill();
-                    //Sequence mySequence = DOTween.Sequence();
-                    //mySequence.Append(other.transform.DOMoveY(10f, 0));
-                    //mySequence.Append(other.transform.DOScale(0.5f, 0.5f));
-                    //mySequence.AppendInterval(0.5f);
-                    //mySequence.Append(other.transform.DOMoveY(10f, 0.5f));
-                    //mySequence.AppendCallback(() => {
-                    //    // Add your script here
-                    //});
-                    //mySequence.Append(transform.DORotate(new Vector3(0, 180, 0), 1));
+                other.GetComponent<Tile>().isCheck = true;
+            //other.transform.parent = null;
+            //other.GetComponent<Rigidbody>().isKinematic = false;
+            //if (other.transform.childCount == 0)
+            //{
+            //other.GetComponent<SphereCollider>().isTrigger = true;
 
-                    other.transform.DOKill();
-                    //other.GetComponent<Tile>().isMagnet = true;
-                    //other.transform.parent = transform;
-                    //other.transform.DOMoveY(0.5f, 0);
-                    //other.transform.DOLocalMove(new Vector3(0, 2f, 0), 0f);
-                    //other.transform.DOLocalMove(new Vector3(0, 2f, 0), 0f).OnComplete(() => other.GetComponent<Tile>().isMagnet = true);
-                    //other.transform.parent = null;
-                }
-                pixels.Add(other.GetComponent<Rigidbody>());
-            }
+            //other.transform.DOKill();
+            //other.GetComponent<Tile>().isMagnet = true;
+            //other.transform.parent = transform;
+            //other.transform.DOMoveY(0.5f, 0);
+            //other.transform.DOLocalMove(new Vector3(0, 2f, 0), 0f);
+            //other.transform.DOLocalMove(new Vector3(0, 2f, 0), 0f).OnComplete(() => other.GetComponent<Tile>().isMagnet = true);
+            //other.transform.parent = null;
+            //}
+            //if(other.transform.localScale.x < 0.75f || forceFactor > 7500)
+            pixels.Add(other.GetComponent<Rigidbody>());
+            //else
+            //    other.transform.DOMoveY(1f, 0.1f);
+            //}
             //}
         }
     }
 
-    IEnumerator delayBuild(float time)
+    private void OnTriggerExit(Collider other)
     {
-        yield return new WaitForSeconds(time);
-        isBuild = false;
-    }
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Pixel") && other.GetComponent<Tile>().isCheck && isStartGame /*&& !other.GetComponent<Tile>().isMagnet*/)
-    //    {
-    //        other.GetComponent<Tile>().isCheck = false;
-    //        other.GetComponent<Tile>().isMagnet = false;
-    //        other.transform.parent = null;
-    //        if (other.transform.childCount == 0)
-    //        {
-    //            if (other != null)
-    //            {
-    //                other.transform.DOKill();
-    //                //other.transform.DOMoveY(0.5f, 0.5f);
-    //            }
-    //        }
-    //        pixels.Remove(other.GetComponent<Rigidbody>());
-    //    }
-    //}
-
-    void delayRemoveMethod(Transform target, int num)
-    {
-        StartCoroutine(delayRemove(target, num));
-    }
-
-    IEnumerator delayRemove(Transform target, int num)
-    {
-        yield return new WaitForSeconds(0.001f * num);
-        if (target != null)
+        if (other.gameObject.CompareTag("Pixel") && other.GetComponent<Tile>().isCheck && isStartGame /*&& !other.GetComponent<Tile>().isMagnet*/)
         {
-            target.transform.DOKill();        }
-        if (!UnityEngine.iOS.Device.generation.ToString().Contains("5") && !isVibrate)
-        {
-            isVibrate = true;
-            StartCoroutine(delayVibrate());
-            MMVibrationManager.Haptic(HapticTypes.LightImpact);
+            other.GetComponent<Tile>().isCheck = false;
+            other.GetComponent<Tile>().isMagnet = false;
+            other.transform.parent = null;
+            pixels.Remove(other.GetComponent<Rigidbody>());
         }
-        yield return new WaitForSeconds(0.21f);
-        if (target != null)
-        {
-            controllerCutOut.xyzPivotPointTransform.position = new Vector3(0, controllerCutOut.xyzPivotPointTransform.position.y + rebuildHeight / totalPixel, 0);
-            count++;
-            levelProgress.value = count;
-            if (count >= totalPixel)
-            {
-                StartCoroutine(Win());
-            }
-            target.transform.DOKill();
-            AddRemoveInstances.instance.RemoveInstances(target.GetComponent<GPUInstancerPrefab>());
-        }
-    }
-
-    IEnumerator delayFixed(GameObject target)
-    {
-        yield return new WaitForSeconds(1.5f);
-        target.transform.parent = transform;
     }
 }

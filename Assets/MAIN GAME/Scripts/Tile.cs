@@ -78,8 +78,8 @@ public class Tile : MonoBehaviour
     //    }
     //}
 
-    public void Check()
-    {
-        isCheck = true;
-    }   
+    //public void Check()
+    //{
+    //    isCheck = true;
+    //}   
 }

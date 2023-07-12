@@ -53,7 +53,8 @@ namespace GPUInstancer
             {
                 GPUInstancerAPI.RemovePrefabInstance(prefabManager, instanceCount);
                 instancesList.Remove(instanceCount);
-                Destroy(instanceCount.gameObject, 0.01f);
+                Destroy(instanceCount.gameObject);
+                //instanceCount.gameObject.SetActive(false);
             }
             catch { }
         }
