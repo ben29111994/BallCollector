@@ -80,6 +80,7 @@
     <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\Editor\SendProgressionEventActionEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Utilities\AdvancedDissolveRemoveObsoleteKeywords.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerManagerEditor.cs" />
+    <Compile Include="Assets\_GamePlayII\Tools\MeshAnimator\Editor\MeshAnimatorURPSetup.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerPrefabEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordEdgeBaseSourceDrawer.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\EditorGUIHelper.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordGlobalControlIDDrawer.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Script Editors\AdvancedDissolvePropertiesControllerEditor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\PostProcessingModelEditor.cs" />
+    <Compile Include="Assets\_GamePlayII\Tools\MeshAnimator\Editor\MeshAnimationCreator.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\AdvancedDissolveExponentalDrawer.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\AdvancedDissolveUVScrollDrawer.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerTreeManagerEditor.cs" />

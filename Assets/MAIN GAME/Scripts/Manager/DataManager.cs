@@ -54,29 +54,29 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public int CountLevel
+    public int TimerLevel
     {
         get
         {
-            return PlayerPrefs.GetInt("CountLevel");
+            return PlayerPrefs.GetInt("TimerLevel");
         }
         set
         {
-            PlayerPrefs.SetInt("CountLevel", value);
+            PlayerPrefs.SetInt("TimerLevel", value);
         }
     }
 
-    public int FuelLevel
-    {
-        get
-        {
-            return PlayerPrefs.GetInt("FuelLevel");
-        }
-        set
-        {
-            PlayerPrefs.SetInt("FuelLevel", value);
-        }
-    }
+    //public int FuelLevel
+    //{
+    //    get
+    //    {
+    //        return PlayerPrefs.GetInt("FuelLevel");
+    //    }
+    //    set
+    //    {
+    //        PlayerPrefs.SetInt("FuelLevel", value);
+    //    }
+    //}
 
     public int PowerLevel
     {
@@ -102,17 +102,17 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public int BitmapLevel
-    {
-        get
-        {
-            return PlayerPrefs.GetInt("BitmapLevel");
-        }
-        set
-        {
-            PlayerPrefs.SetInt("BitmapLevel", value);
-        }
-    }
+    //public int BitmapLevel
+    //{
+    //    get
+    //    {
+    //        return PlayerPrefs.GetInt("BitmapLevel");
+    //    }
+    //    set
+    //    {
+    //        PlayerPrefs.SetInt("BitmapLevel", value);
+    //    }
+    //}
 
     private void Awake()
     {

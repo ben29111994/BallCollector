@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UpgradeSystem : MonoBehaviour
+public class UpgradeSystem : GameController
 {
     [Header("Count System")]
     public GameObject handAnim;
@@ -121,12 +121,12 @@ public class UpgradeSystem : MonoBehaviour
         switch ((int)typeSystem)
         {
             case 0:
-                return DataManager.Instance.CountLevel;
+                return DataManager.Instance.TimerLevel;
+            //case 1:
+            //    return DataManager.Instance.FuelLevel;
             case 1:
-                return DataManager.Instance.FuelLevel;
-            case 2:
                 return DataManager.Instance.PowerLevel;
-            case 3:
+            case 2:
                 return DataManager.Instance.SizeLevel;
         }
 
