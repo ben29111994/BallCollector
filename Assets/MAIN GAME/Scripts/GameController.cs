@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
     float meshHeight;
     float count;
     bool isBuild = false;
-    public float CameraOffsetY = 20, CameraOffsetZ = -42;
+    public float CameraOffsetY = 30, CameraOffsetZ = 20;
 
 
     [Header("UI")]
@@ -72,7 +72,6 @@ public class GameController : MonoBehaviour
         instance = this;
         rigid = GetComponent<Rigidbody>();
         CameraOffsetY = Camera.main.transform.position.y;
-        CameraOffsetZ = 12;
         StartCoroutine(delayRefreshInstancer());
         StartCoroutine(delayStart());
     }

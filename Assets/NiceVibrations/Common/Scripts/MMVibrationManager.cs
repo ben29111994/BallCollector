@@ -2,64 +2,161 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using System;
 
-#if UNITY_IOS 
+#if UNITY_IOS
 	using UnityEngine.iOS;
 #endif
 
 namespace MoreMountains.NiceVibrations
 {
-	public enum HapticTypes { Selection, Success, Warning, Failure, LightImpact, MediumImpact, HeavyImpact }
-
 	/// <summary>
-	/// This class will allow you to trigger vibrations and haptic feedbacks on both iOS and Android, 
+	/// This class will allow you to trigger vibrations and haptic feedbacks on both iOS and Android,
 	/// or on each specific platform independently.
-	/// 
-	/// For haptics patterns, it takes inspiration from the iOS guidelines : 
+	///
+	/// For haptics patterns, it takes inspiration from the iOS guidelines :
 	/// https://developer.apple.com/ios/human-interface-guidelines/user-interaction/feedback
 	/// Of course the iOS haptics are called directly as they are, and they're crudely reproduced on Android.
 	/// Feel free to tweak the patterns or create your own.
-	/// 
+	///
 	/// Here's a brief overview of the patterns :
-	/// 
+	///
 	/// - selection : light
 	/// - success : light / heavy
 	/// - warning : heavy / medium
 	/// - failure : medium / medium / heavy / light
-	/// - light 
-	/// - medium 
-	/// - heavy  
-	/// 
+	/// - light
+	/// - medium
+	/// - heavy
+    /// - soft
+    /// - rigid
+    ///
+    /// In addition, this class will also let you trigger core haptics on supported devices running recent versions of iOS (after iOS 13).
+    /// These let you trigger transient or continuous haptics, or play AHAP based JSON strings for even more control.
 	/// </summary>
-	public static class MMVibrationManager 
+	public static class MMVibrationManager
 	{
-		// INTERFACE ---------------------------------------------------------------------------------------------------------
-
+        /// the current iOS version
+        public static float iOSVersion;
+        /// the duration of the light vibration (in microseconds)
 		public static long LightDuration = 20;
+        /// the duration of the medium vibration (in microseconds)
 		public static long MediumDuration = 40;
-		public static long HeavyDuration = 80;
-		public static int LightAmplitude = 40;
+        /// the duration of the heavy vibration (in microseconds)
+        public static long HeavyDuration = 80;
+        /// the duration of the rigid vibration (in microseconds)
+        public static long RigidDuration = 20;
+        /// the duration of the soft vibration (in microseconds)
+        public static long SoftDuration = 80;
+        /// the amplitude of the light vibration
+        public static int LightAmplitude = 40;
+        /// the amplitude of the medium vibration
 		public static int MediumAmplitude = 120;
+        /// the amplitude of the heavy vibration
 		public static int HeavyAmplitude = 255;
-		private static int _sdkVersion = -1;
-		private static long[] _successPattern = { 0, LightDuration, LightDuration, HeavyDuration};
+        /// the amplitude of the rigid vibration
+        public static int RigidAmplitude = 255;
+        /// the amplitude of the soft vibration
+        public static int SoftAmplitude = 40;
+
+        private static bool _vibrationsActive = true;
+        private static bool _debugLogActive = false;
+        private static bool _hapticsPlayedOnce = false;
+
+        private static long[] _rigidImpactPattern = { 0, RigidDuration };
+        private static int[] _rigidImpactPatternAmplitude = { 0, RigidAmplitude };
+        private static long[] _softImpactPattern = { 0, SoftDuration };
+        private static int[] _softImpactPatternAmplitude = { 0, SoftAmplitude };
+        private static long[] _lightImpactPattern = { 0, LightDuration };
+        private static int[] _lightImpactPatternAmplitude = { 0, LightAmplitude };
+        private static long[] _mediumImpactPattern = { 0, MediumDuration };
+        private static int[] _mediumImpactPatternAmplitude = { 0, MediumAmplitude };
+        private static long[] _HeavyImpactPattern = { 0, HeavyDuration };
+        private static int[] _HeavyImpactPatternAmplitude = { 0, HeavyAmplitude };
+        private static long[] _successPattern = { 0, LightDuration, LightDuration, HeavyDuration};
 		private static int[] _successPatternAmplitude = { 0, LightAmplitude, 0, HeavyAmplitude};
 		private static long[] _warningPattern = { 0, HeavyDuration, LightDuration, MediumDuration};
 		private static int[] _warningPatternAmplitude = { 0, HeavyAmplitude, 0, MediumAmplitude};
 		private static long[] _failurePattern = { 0, MediumDuration, LightDuration, MediumDuration, LightDuration, HeavyDuration, LightDuration, LightDuration};
 		private static int[] _failurePatternAmplitude = { 0, MediumAmplitude, 0, MediumAmplitude, 0, HeavyAmplitude, 0, LightAmplitude};
 
-		/// <summary>
-		/// Returns true if the current platform is Android, false otherwise.
-		/// </summary>
-		public static bool Android()
+        #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+        private static Vector3 _rumbleRigid = new Vector3(0.5f, 1f, 0.08f);
+        private static Vector3 _rumbleSoft = new Vector3(1f, 0.03f, 0.1f);
+        private static Vector3 _rumbleLight = new Vector3(0.5f, 0.5f, 0.02f);
+        private static Vector3 _rumbleMedium = new Vector3(0.8f, 0.8f, 0.04f);
+        private static Vector3 _rumbleHeavy = new Vector3(1f, 1f, 0.08f);
+        private static Vector3 _rumbleSuccess = new Vector3(1f, 1f, 1f);
+        private static Vector3 _rumbleWarning = new Vector3(1f, 1f, 1f);
+        private static Vector3 _rumbleFailure = new Vector3(1f, 1f, 1f);
+        private static Vector3 _rumbleSelection = new Vector3(1f, 1f, 1f);
+        #endif
+
+
+        /// <summary>
+        /// On construction, computes the current iOS version
+        /// </summary>
+        static MMVibrationManager()
+        {
+            DebugLog("[MMVibrationManager] Initialize vibration manager");
+            iOSVersion = MMNViOS.ComputeiOSVersion();
+        }
+
+        /// <summary>
+        /// Enables or disables all haptics called via this class
+        /// </summary>
+        /// <param name="status"></param>
+        public static void SetHapticsActive(bool status)
+        {
+            DebugLog("[MMVibrationManager] Set haptics active : "+status);
+            _vibrationsActive = status;
+            if (!status)
+            {
+                MMVibrationManager.StopContinuousHaptic(true);    
+            }
+        }
+
+        /// <summary>
+        /// Returns true if haptics are supported on this device
+        /// </summary>
+        /// <returns></returns>
+        public static bool HapticsSupported()
+        {
+            if (iOS())
+            {
+                if (iOSVersion >= 13)
+                {
+                    return MMNViOSCoreHaptics.CoreHapticsSupported();
+                }
+                else
+                {
+                    return MMNViOS.iOSHapticsSupported();
+                }
+            }
+            if (Android())
+            {
+                return MMNVAndroid.AndroidHasVibrator();
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Enables or disables console logs (off by default)
+        /// </summary>
+        /// <param name="log"></param>
+        public static void SetDebugMode(bool log)
+        {
+            _debugLogActive = log;
+            MMNViOSCoreHaptics.SetDebugMode(true);
+        }
+
+        /// <summary>
+        /// Returns true if the current platform is Android, false otherwise.
+        /// </summary>
+        public static bool Android()
 		{
-			#if UNITY_ANDROID && !UNITY_EDITOR
-				return true;
-			#else
-				return false;
-			#endif
-		}
+            return MMNVPlatform.Android();
+        }
 
 		/// <summary>
 		/// Returns true if the current platform is iOS, false otherwise
@@ -67,375 +164,491 @@ namespace MoreMountains.NiceVibrations
 		/// <returns><c>true</c>, if O was ied, <c>false</c> otherwise.</returns>
 		public static bool iOS()
 		{
-			#if UNITY_IOS && !UNITY_EDITOR
-				return true;
-			#else
-				return false;
-			#endif
+            return MMNVPlatform.iOS();
 		}
 
 		/// <summary>
 		/// Triggers a simple vibration
 		/// </summary>
 		public static void Vibrate()
-		{
-			if (Android ())
+        {
+            DebugLog("[MMVibrationManager] Vibrate");
+            if (!_vibrationsActive)
+            {
+                return;
+            }
+            if (Android())
 			{
-				AndroidVibrate (MediumDuration);
-			} 
-			else if (iOS ())
+			    MMNVAndroid.AndroidVibrate (MediumDuration);
+			}
+			else if (iOS())
 			{
-				iOSTriggerHaptics (HapticTypes.MediumImpact);
-			} 
+                if ((iOSVersion >= 13) && HapticsSupported())
+                {
+                    MMNViOSCoreHaptics.PlayTransientHapticPattern(0.8f, 0.8f, true);
+                    _hapticsPlayedOnce = true;
+                }
+                else
+                {
+                    MMNViOS.iOSTriggerHaptics(HapticTypes.MediumImpact);
+                }
+			}
 		}
 
 		/// <summary>
 		/// Triggers a haptic feedback of the specified type
 		/// </summary>
 		/// <param name="type">Type.</param>
-		public static void Haptic(HapticTypes type)
+		public static void Haptic(HapticTypes type, bool defaultToRegularVibrate = false, bool alsoRumble = false, MonoBehaviour coroutineSupport = null, int controllerID = -1)
 		{
-			if (Android ())
+            if (!_vibrationsActive)
+            {
+                return;
+            }
+
+            DebugLog("[MMVibrationManager] Regular Haptic");
+
+            if (Android())
 			{
 				switch (type)
 				{
+                    case HapticTypes.None:
+                        // do nothing
+                        break;
 					case HapticTypes.Selection:
-						AndroidVibrate (LightDuration, LightAmplitude);
+						MMNVAndroid.AndroidVibrate (LightDuration, LightAmplitude);
 						break;
 
 					case HapticTypes.Success:
-						AndroidVibrate(_successPattern, _successPatternAmplitude, -1);
+                        MMNVAndroid.AndroidVibrate(_successPattern, _successPatternAmplitude, -1);
 						break;
 
 					case HapticTypes.Warning:
-						AndroidVibrate(_warningPattern, _warningPatternAmplitude, -1);
+                        MMNVAndroid.AndroidVibrate(_warningPattern, _warningPatternAmplitude, -1);
 						break;
 
 					case HapticTypes.Failure:
-						AndroidVibrate(_failurePattern, _failurePatternAmplitude, -1);
+                        MMNVAndroid.AndroidVibrate(_failurePattern, _failurePatternAmplitude, -1);
 						break;
 
 					case HapticTypes.LightImpact:
-						AndroidVibrate (LightDuration, LightAmplitude);
+                        MMNVAndroid.AndroidVibrate (_lightImpactPattern, _lightImpactPatternAmplitude, -1);
 						break;
 
 					case HapticTypes.MediumImpact:
-						AndroidVibrate (MediumDuration, MediumAmplitude);
+                        MMNVAndroid.AndroidVibrate (_mediumImpactPattern, _mediumImpactPatternAmplitude, -1);
 						break;
 
 					case HapticTypes.HeavyImpact:
-						AndroidVibrate (HeavyDuration, HeavyAmplitude);
+                        MMNVAndroid.AndroidVibrate (_HeavyImpactPattern, _HeavyImpactPatternAmplitude, -1);
 						break;
+                    case HapticTypes.RigidImpact:
+                        MMNVAndroid.AndroidVibrate(_rigidImpactPattern, _rigidImpactPatternAmplitude, -1);
+                        break;
+                    case HapticTypes.SoftImpact:
+                        MMNVAndroid.AndroidVibrate(_softImpactPattern, _softImpactPatternAmplitude, -1);
+                        break;
 				}
-			} 
-			else if (iOS ())
+			}
+			else if (iOS())
 			{
-				iOSTriggerHaptics (type);
-			} 
-		}
-
-		// INTERFACE END ---------------------------------------------------------------------------------------------------------
-
-
-
-		// Android ---------------------------------------------------------------------------------------------------------
-
-		// Android Vibration reference can be found at :
-		// https://developer.android.com/reference/android/os/Vibrator.html
-		// And there starting v26, with support for amplitude :
-		// https://developer.android.com/reference/android/os/VibrationEffect.html
-
-		#if UNITY_ANDROID && !UNITY_EDITOR
-			private static AndroidJavaClass UnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-			private static AndroidJavaObject CurrentActivity = UnityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-			private static AndroidJavaObject AndroidVibrator = CurrentActivity.Call<AndroidJavaObject>("getSystemService", "vibrator");
-			private static AndroidJavaClass VibrationEffectClass;
-			private static AndroidJavaObject VibrationEffect;
-			private static int DefaultAmplitude;
-		#else
-			private static AndroidJavaClass UnityPlayer;
-			private static AndroidJavaObject CurrentActivity;
-			private static AndroidJavaObject AndroidVibrator = null;
-			private static AndroidJavaClass VibrationEffectClass = null;
-			private static AndroidJavaObject VibrationEffect;
-			private static int DefaultAmplitude;
-		#endif
-
-		/// <summary>
-		/// Requests a default vibration on Android, for the specified duration, in milliseconds
-		/// </summary>
-		/// <param name="milliseconds">Milliseconds.</param>
-		public static void AndroidVibrate(long milliseconds)
-		{
-			if (!Android ()) { return; }
-			AndroidVibrator.Call("vibrate", milliseconds);
-		}
-
-		/// <summary>
-		/// Requests a vibration of the specified amplitude and duration. If amplitude is not supported by the device's SDK, a default vibration will be requested
-		/// </summary>
-		/// <param name="milliseconds">Milliseconds.</param>
-		/// <param name="amplitude">Amplitude.</param>
-		public static void AndroidVibrate(long milliseconds, int amplitude)
-		{
-			if (!Android ()) { return; }
-			// amplitude is only supported 
-			if ((AndroidSDKVersion() < 26)) 
-			{ 
-				AndroidVibrate (milliseconds); 
-			}
-			else
-			{
-				VibrationEffectClassInitialization ();
-				VibrationEffect = VibrationEffectClass.CallStatic<AndroidJavaObject> ("createOneShot", new object[] { milliseconds,	amplitude });
-				AndroidVibrator.Call ("vibrate", VibrationEffect);
-			}
-		}
-
-		// Requests a vibration on Android for the specified pattern and optional repeat
-		// Straight out of the Android documentation :
-		// Pass in an array of ints that are the durations for which to turn on or off the vibrator in milliseconds. 
-		// The first value indicates the number of milliseconds to wait before turning the vibrator on. 
-		// The next value indicates the number of milliseconds for which to keep the vibrator on before turning it off. 
-		// Subsequent values alternate between durations in milliseconds to turn the vibrator off or to turn the vibrator on.
-		// repeat:  the index into pattern at which to repeat, or -1 if you don't want to repeat.
-		public static void AndroidVibrate(long[] pattern, int repeat)
-		{
-			if (!Android ()) { return; }
-			if ((AndroidSDKVersion () < 26))
-			{ 
-				AndroidVibrator.Call ("vibrate", pattern, repeat);
-			}
-			else
-			{
-				VibrationEffectClassInitialization ();
-				VibrationEffect = VibrationEffectClass.CallStatic<AndroidJavaObject> ("createWaveform", new object[] { pattern,	repeat });
-				AndroidVibrator.Call ("vibrate", VibrationEffect);
-			}
-		}
-
-		/// <summary>
-		/// Requests a vibration on Android for the specified pattern, amplitude and optional repeat
-		/// </summary>
-		/// <param name="pattern">Pattern.</param>
-		/// <param name="amplitudes">Amplitudes.</param>
-		/// <param name="repeat">Repeat.</param>
-		public static void AndroidVibrate(long[] pattern, int[] amplitudes, int repeat )
-		{
-			if (!Android ()) { return; }
-			if ((AndroidSDKVersion () < 26))
-			{ 
-				AndroidVibrator.Call ("vibrate", pattern, repeat);
-			}
-			else
-			{
-				VibrationEffectClassInitialization ();
-				VibrationEffect = VibrationEffectClass.CallStatic<AndroidJavaObject> ("createWaveform", new object[] { pattern,	amplitudes, repeat });
-				AndroidVibrator.Call ("vibrate", VibrationEffect);
-			}
-		}
-
-		/// <summary>
-		/// Stops all Android vibrations that may be active
-		/// </summary>
-		public static void AndroidCancelVibrations()
-		{
-			if (!Android ()) { return; }
-			AndroidVibrator.Call("cancel");
-		}
-
-		/// <summary>
-		/// Initializes the VibrationEffectClass if needed.
-		/// </summary>
-		private static void VibrationEffectClassInitialization ()
-		{
-			if (VibrationEffectClass == null) { VibrationEffectClass = new AndroidJavaClass ("android.os.VibrationEffect"); }	
-		}
-
-		/// <summary>
-		/// Returns the current Android SDK version as an int
-		/// </summary>
-		/// <returns>The SDK version.</returns>
-		public static int AndroidSDKVersion() 
-		{
-			if (_sdkVersion == -1)
-			{
-				int apiLevel = int.Parse (SystemInfo.operatingSystem.Substring(SystemInfo.operatingSystem.IndexOf("-") + 1, 3));
-				_sdkVersion = apiLevel;
-				return apiLevel;	
-			}
-			else
-			{
-				return _sdkVersion;
-			}
-		}
-			
-		// Android End ---------------------------------------------------------------------------------------------------------
-
-		// iOS ----------------------------------------------------------------------------------------------------------------
-
-		// The following will only work if the iOSHapticInterface.m file is in a Plugins folder in your project.
-		// It's a pretty straightforward implementation of iOS's UIFeedbackGenerator's methods.
-		// You can learn more about them there : https://developer.apple.com/documentation/uikit/uifeedbackgenerator
-
-		#if UNITY_IOS && !UNITY_EDITOR
-			[DllImport ("__Internal")]
-			private static extern void InstantiateFeedbackGenerators();
-			[DllImport ("__Internal")]
-			private static extern void ReleaseFeedbackGenerators();
-			[DllImport ("__Internal")]
-			private static extern void SelectionHaptic();
-			[DllImport ("__Internal")]
-			private static extern void SuccessHaptic();
-			[DllImport ("__Internal")]
-			private static extern void WarningHaptic();
-			[DllImport ("__Internal")]
-			private static extern void FailureHaptic();
-			[DllImport ("__Internal")]
-			private static extern void LightImpactHaptic();
-			[DllImport ("__Internal")]
-			private static extern void MediumImpactHaptic();
-			[DllImport ("__Internal")]
-			private static extern void HeavyImpactHaptic();
-		#else
-			private static void InstantiateFeedbackGenerators() {}
-			private static void ReleaseFeedbackGenerators() {}
-			private static void SelectionHaptic() {}
-			private static void SuccessHaptic() {}
-			private static void WarningHaptic() {}
-			private static void FailureHaptic() {}
-			private static void LightImpactHaptic() {}
-			private static void MediumImpactHaptic() {}
-			private static void HeavyImpactHaptic() {}
-		#endif
-		private static bool iOSHapticsInitialized = false;
-
-		/// <summary>
-		/// Call this method to initialize the haptics. If you forget to do it, Nice Vibrations will do it for you the first time you
-		/// call iOSTriggerHaptics. It's better if you do it though.
-		/// </summary>
-		public static void iOSInitializeHaptics()
-		{
-			if (!iOS ()) { return; }
-			InstantiateFeedbackGenerators ();
-			iOSHapticsInitialized = true;
-		}
-
-		/// <summary>
-		/// Releases the feedback generators, usually you'll want to call this at OnDisable(); or anytime you know you won't need 
-		/// vibrations anymore.
-		/// </summary>
-		public static void iOSReleaseHaptics ()
-		{
-			if (!iOS ()) { return; }
-			ReleaseFeedbackGenerators ();
-		}
-
-		/// <summary>
-		/// This methods tests the current device generation against a list of devices that don't support haptics, and returns true if haptics are supported, false otherwise.
-		/// </summary>
-		/// <returns><c>true</c>, if supported was hapticsed, <c>false</c> otherwise.</returns>
-		public static bool HapticsSupported()
-		{
-			bool hapticsSupported = false;
-			#if UNITY_IOS 
-			DeviceGeneration generation = Device.generation;
-			if ((generation == DeviceGeneration.iPhone3G)
-			|| (generation == DeviceGeneration.iPhone3GS)
-			|| (generation == DeviceGeneration.iPodTouch1Gen)
-			|| (generation == DeviceGeneration.iPodTouch2Gen)
-			|| (generation == DeviceGeneration.iPodTouch3Gen)
-			|| (generation == DeviceGeneration.iPodTouch4Gen)
-			|| (generation == DeviceGeneration.iPhone4)
-			|| (generation == DeviceGeneration.iPhone4S)
-			|| (generation == DeviceGeneration.iPhone5)
-			|| (generation == DeviceGeneration.iPhone5C)
-			|| (generation == DeviceGeneration.iPhone5S)
-			|| (generation == DeviceGeneration.iPhone6)
-			|| (generation == DeviceGeneration.iPhone6Plus)
-			|| (generation == DeviceGeneration.iPhone6S)
-			|| (generation == DeviceGeneration.iPhone6SPlus))
-			{
-			hapticsSupported = false;
-			}
-			else
-			{
-			hapticsSupported = true;
-			}
-			#endif
-
-			return hapticsSupported;
-		}
-	
-		/// <summary>
-		/// iOS only : triggers a haptic feedback of the specified type
-		/// </summary>
-		/// <param name="type">Type.</param>
-		public static void iOSTriggerHaptics(HapticTypes type)
-		{
-			if (!iOS ()) { return; }
-
-			if (!iOSHapticsInitialized)
-			{
-				iOSInitializeHaptics ();
+                MMNViOS.iOSTriggerHaptics(type, defaultToRegularVibrate);
 			}
 
-			// this will trigger a standard vibration on all the iOS devices that don't support haptic feedback
+            if (alsoRumble && (coroutineSupport != null))
+            {
+                #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+                switch (type)
+                {
+                    case HapticTypes.None:
+                        // do nothing
+                        break;
+                    case HapticTypes.Selection:
+                        MMNVRumble.Rumble(_rumbleLight.x, _rumbleMedium.y, _rumbleLight.z, coroutineSupport, controllerID);
+                        break;
 
-			if (HapticsSupported())
-			{
-				switch (type)
+                    case HapticTypes.Success:
+                        MMNVRumble.Rumble(_successPattern, _successPatternAmplitude, -1, coroutineSupport, controllerID);
+                        break;
+
+                    case HapticTypes.Warning:
+                        MMNVRumble.Rumble(_warningPattern, _warningPatternAmplitude, -1, coroutineSupport, controllerID);
+                        break;
+
+                    case HapticTypes.Failure:
+                        MMNVRumble.Rumble(_failurePattern, _failurePatternAmplitude, -1, coroutineSupport, controllerID);
+                        break;
+
+                    case HapticTypes.LightImpact:
+                        MMNVRumble.Rumble(_rumbleLight.x, _rumbleLight.y, _rumbleLight.z, coroutineSupport, controllerID);
+                        break;
+
+                    case HapticTypes.MediumImpact:
+                        MMNVRumble.Rumble(_rumbleMedium.x, _rumbleMedium.y, _rumbleMedium.z, coroutineSupport, controllerID);
+                        break;
+
+                    case HapticTypes.HeavyImpact:
+                        MMNVRumble.Rumble(_rumbleHeavy.x, _rumbleHeavy.y, _rumbleHeavy.z, coroutineSupport, controllerID);
+                        break;
+                    case HapticTypes.RigidImpact:
+                        MMNVRumble.Rumble(_rumbleRigid.x, _rumbleRigid.y, _rumbleRigid.z, coroutineSupport, controllerID);
+                        break;
+                    case HapticTypes.SoftImpact:
+                        MMNVRumble.Rumble(_rumbleSoft.x, _rumbleSoft.y, _rumbleSoft.z, coroutineSupport, controllerID);
+                        break;
+                }
+                #endif
+            }
+		}
+
+        /// <summary>
+        /// Plays a transient haptic, a single, short haptic feedback, of the specified intensity and sharpness
+        /// </summary>
+        /// <param name="intensity"></param>
+        /// <param name="sharpness"></param>
+        public static void TransientHaptic(float intensity, float sharpness, bool alsoRumble = false, MonoBehaviour coroutineSupport = null, int controllerID = -1)
+        {
+            TransientHaptic(true, intensity, sharpness, true, intensity, sharpness, true, alsoRumble, intensity, sharpness, controllerID, coroutineSupport);
+        }
+
+        /// <summary>
+        /// Plays a transient haptic, signature with more fine control
+        /// </summary>
+        /// <param name="vibrateiOS"></param>
+        /// <param name="iOSIntensity"></param>
+        /// <param name="iOSSharpness"></param>
+        /// <param name="vibrateAndroid"></param>
+        /// <param name="androidIntensity"></param>
+        /// <param name="androidSharpness"></param>
+        /// <param name="vibrateAndroidIfNoSupport"></param>
+        /// <param name="rumble"></param>
+        /// <param name="rumbleLowFrequency"></param>
+        /// <param name="rumbleHighFrequency"></param>
+        /// <param name="controllerID"></param>
+        /// <param name="coroutineSupport"></param>
+        public static void TransientHaptic(bool vibrateiOS, float iOSIntensity, float iOSSharpness, 
+                                            bool vibrateAndroid, float androidIntensity = 1f, float androidSharpness = 1f,
+                                            bool vibrateAndroidIfNoSupport = false,
+                                            bool rumble = true, float rumbleLowFrequency = 1f, float rumbleHighFrequency = 1f, int controllerID = -1,
+                                            MonoBehaviour coroutineSupport = null, bool threaded = true)
+        {
+            if (!_vibrationsActive)
+            {
+                return;
+            }
+
+            DebugLog("[MMVibrationManager] Transient Haptic");
+
+            if (Android() && vibrateAndroid)
+            {
+                if (!MMNVAndroid.AndroidHasAmplitudeControl() && !vibrateAndroidIfNoSupport)
+                {
+                    return;
+                }
+                androidIntensity = Remap(androidIntensity, 0f, 1f, 0, 255);
+                MMNVAndroid.AndroidVibrate(100, (int)(androidIntensity));
+            }
+            else if (iOS() && vibrateiOS)
+            {
+                if ((iOSVersion >= 13) && HapticsSupported())
+                {
+                    MMNViOSCoreHaptics.PlayTransientHapticPattern(iOSIntensity, iOSSharpness, threaded);
+                    _hapticsPlayedOnce = true;
+                }
+                else
+                {
+                    if (iOSIntensity < 0.3f)
+                    {
+                        MMNViOS.iOSTriggerHaptics(HapticTypes.LightImpact);
+                    }
+                    else if ((iOSIntensity >= 0.3f) && (iOSIntensity < 0.6f))
+                    {
+                        MMNViOS.iOSTriggerHaptics(HapticTypes.MediumImpact);
+                    }
+                    else
+                    {
+                        MMNViOS.iOSTriggerHaptics(HapticTypes.HeavyImpact);
+                    }
+                }
+            }
+            if (rumble && (coroutineSupport != null))
+            {
+                #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+                    MMNVRumble.Rumble(rumbleLowFrequency, rumbleHighFrequency, 0.08f, coroutineSupport, controllerID);
+                #endif
+            }
+        }
+
+        /// <summary>
+        /// Plays a continuous haptic of the specified intensity, sharpness and duration
+        /// </summary>
+        /// <param name="intensity">the intensity of the haptic, between 0 and 1</param>
+        /// <param name="sharpness">the sharpness of the haptic, between 0 and 1</param>
+        /// <param name="duration">the duration in seconds</param>
+        /// <param name="fallbackOldiOS">the fallback to use on old iOS versions that don't support Core Haptics</param>
+        /// <param name="mono">a monobehaviour to use to sustain this haptic</param>
+        /// <param name="alsoRumble">whether to also rumble or not</param>
+        /// <param name="controllerID">the ID of the controller</param>
+        /// <param name="threaded">whether to call this on the main thread (false) or a secondary one (true)</param>
+        /// <param name="fullIntensity">whether to allow for full intensity control for subsequent updates</param>
+        public static void ContinuousHaptic(float intensity, float sharpness, float duration, 
+            HapticTypes fallbackOldiOS = HapticTypes.None, MonoBehaviour mono = null, bool alsoRumble = false, int controllerID = -1, bool threaded = false, bool fullIntensity = true)
+        {
+            ContinuousHaptic(true, intensity, sharpness, fallbackOldiOS, true, intensity, sharpness, false, alsoRumble, intensity, sharpness, controllerID, duration, mono, threaded, fullIntensity);
+        }
+
+        /// <summary>
+        /// Plays a continuous haptic, full options signature 
+        /// </summary>
+        /// <param name="vibrateiOS"></param>
+        /// <param name="iOSIntensity"></param>
+        /// <param name="iOSSharpness"></param>
+        /// <param name="fallbackOldiOS"></param>
+        /// <param name="vibrateAndroid"></param>
+        /// <param name="androidIntensity"></param>
+        /// <param name="androidSharpness"></param>
+        /// <param name="vibrateAndroidIfNoSupport"></param>
+        /// <param name="rumble"></param>
+        /// <param name="rumbleLowFrequency"></param>
+        /// <param name="rumbleHighFrequency"></param>
+        /// <param name="controllerID"></param>
+        /// <param name="duration">the duration in seconds</param>
+        /// <param name="mono">a monobehaviour to use to sustain this haptic</param>
+        /// <param name="threaded">whether to call this on the main thread (false) or a secondary one (true)</param>
+        /// <param name="fullIntensity">whether to allow for full intensity control for subsequent updates</param>
+        public static void ContinuousHaptic(bool vibrateiOS, float iOSIntensity, float iOSSharpness, HapticTypes fallbackOldiOS,
+                                            bool vibrateAndroid, float androidIntensity, float androidSharpness, 
+                                            bool vibrateAndroidIfNoSupport,
+                                            bool rumble, float rumbleLowFrequency, float rumbleHighFrequency, int controllerID,
+                                            float duration, 
+                                            MonoBehaviour mono = null, bool threaded = false, bool fullIntensity = true)
+        {
+            if (!_vibrationsActive)
+            {
+                return;
+            }
+
+            DebugLog("[MMVibrationManager] Continuous Haptic");
+
+            if (Android() && vibrateAndroid)
+            {
+                if (!MMNVAndroid.AndroidHasAmplitudeControl() && !vibrateAndroidIfNoSupport)
+                {
+                    return;
+                }
+                androidIntensity = Remap(androidIntensity, 0f, 1f, 0, 255);
+                MMNVAndroid.AndroidVibrate((long)(duration * 1000), (int)(androidIntensity));
+            }
+            else if (iOS() && vibrateiOS)
+            {
+                if ((iOSVersion >= 13) && HapticsSupported())
+                {
+                    MMNViOSCoreHaptics.PlayContinuousHapticPattern(iOSIntensity, iOSSharpness, duration, mono, threaded, fullIntensity);
+                    _hapticsPlayedOnce = true;
+                }
+                else
+                {
+                    MMNViOS.iOSTriggerHaptics(fallbackOldiOS);
+                }
+            }
+            if (rumble && (mono != null))
+            {
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+                MMNVRumble.RumbleContinuous(rumbleLowFrequency, rumbleHighFrequency, controllerID);
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Updates a continuous haptic while it's playing. Not supported on Android for now, until Google adds API support for that
+        /// </summary>
+        /// <param name="intensity"></param>
+        /// <param name="sharpness"></param>
+        /// <param name="alsoRumble"></param>
+        public static void UpdateContinuousHaptic(float intensity, float sharpness, bool alsoRumble = false, int controllerID = -1, bool threaded = false)
+        {
+            UpdateContinuousHaptic(true, intensity, sharpness, true, intensity, sharpness, alsoRumble, intensity, sharpness, controllerID, threaded);
+        }
+
+        /// <summary>
+        /// Updates a continuous haptic while it's playing. Not supported on Android for now, until Google adds API support for that
+        /// More options signature
+        /// </summary>
+        /// <param name="ios"></param>
+        /// <param name="iosIntensity"></param>
+        /// <param name="iosSharpness"></param>
+        /// <param name="android"></param>
+        /// <param name="androidIntensity"></param>
+        /// <param name="androidSharpness"></param>
+        /// <param name="rumble"></param>
+        /// <param name="rumbleLowFrequency"></param>
+        /// <param name="rumbleHighFrequency"></param>
+        /// <param name="controllerID"></param>
+        public static void UpdateContinuousHaptic(bool ios, float iosIntensity, float iosSharpness, 
+                                                  bool android, float androidIntensity, float androidSharpness,
+                                                  bool rumble, float rumbleLowFrequency, float rumbleHighFrequency, int controllerID = -1,
+                                                  bool threaded = false)
+        {
+            if (iOS() && ios)
+            {
+                if ((iOSVersion >= 13) && HapticsSupported())
+                {
+                    MMNViOSCoreHaptics.UpdateContinuousHapticPattern(iosIntensity, iosSharpness, threaded);
+                    _hapticsPlayedOnce = true;
+                }
+            }
+            if (rumble)
+            {
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+                MMNVRumble.RumbleContinuous(rumbleLowFrequency, rumbleHighFrequency, controllerID);
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Stops all currently running haptics
+        /// </summary>
+        /// <param name="alsoRumble"></param>
+		public static void StopAllHaptics(bool alsoRumble = false)
+		{
+            if (!_hapticsPlayedOnce)
+            {
+                return;
+            }
+
+            DebugLog("[MMVibrationManager] Stop all haptics");
+			MMNViOSCoreHaptics.StopEngine();
+			MMNVAndroid.AndroidCancelVibrations();
+			#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+				if (alsoRumble)
 				{
-					case HapticTypes.Selection:
-						SelectionHaptic ();
-						break;
-
-					case HapticTypes.Success:
-						SuccessHaptic ();
-						break;
-
-					case HapticTypes.Warning:
-						WarningHaptic ();
-						break;
-
-					case HapticTypes.Failure:
-						FailureHaptic ();
-						break;
-
-					case HapticTypes.LightImpact:
-						LightImpactHaptic ();
-						break;
-
-					case HapticTypes.MediumImpact:
-						MediumImpactHaptic ();
-						break;
-
-					case HapticTypes.HeavyImpact:
-						HeavyImpactHaptic ();
-						break;
+						MMNVRumble.StopRumble();
 				}
-			}
-			else
-			{
-				#if UNITY_IOS 
-					Handheld.Vibrate();
-				#endif
-			}
-		}
-
-		/// <summary>
-		/// Returns a string containing iOS SDK informations
-		/// </summary>
-		/// <returns>The OSSDK version.</returns>
-		public static string iOSSDKVersion() 
-		{
-			#if UNITY_IOS && !UNITY_EDITOR
-				return Device.systemVersion;
-			#else
-				return null;
 			#endif
 		}
 
-		// iOS End ----------------------------------------------------------------------------------------------------------------
-	}
+        /// <summary>
+        /// Stops all running pattern or continuous haptics
+        /// </summary>
+        public static void StopContinuousHaptic(bool alsoRumble = false)
+        {
+            DebugLog("[MMVibrationManager] Stop Continuous Haptic");
+            MMNViOSCoreHaptics.StopHapticPatterns();
+            MMNVAndroid.AndroidCancelVibrations();
+            #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+                if (alsoRumble)
+                {
+                    MMNVRumble.StopRumble();
+                }
+            #endif
+        }
+
+        /// <summary>
+        /// Plays a haptic pattern, the most complex type of haptic, defined by a JSON string on iOS, and a pattern on Android
+        /// </summary>
+        /// <param name="iOSJSONString"></param>
+        /// <param name="androidPattern"></param>
+        /// <param name="androidAmplitudes"></param>
+        /// <param name="androidRepeat"></param>
+        /// <param name="fallbackOldiOS"></param>
+        public static void AdvancedHapticPattern(string iOSJSONString,
+                                                long[] androidPattern, int[] androidAmplitudes, int androidRepeat,
+                                                long[] rumblePattern, int[] rumbleLowFreqAmplitudes, int[] rumbleHighFreqAmplitudes, int rumbleRepeat,
+                                                HapticTypes fallbackOldiOS = HapticTypes.None,
+                                                MonoBehaviour coroutineSupport = null, int controllerID = -1, bool threaded = false)
+        {
+            AdvancedHapticPattern(true, iOSJSONString, true, androidPattern, androidAmplitudes, androidRepeat, false, true, rumblePattern,
+                rumbleLowFreqAmplitudes, rumbleHighFreqAmplitudes, rumbleRepeat, fallbackOldiOS, coroutineSupport, controllerID, threaded);
+        }
+
+        /// <summary>
+        /// Plays a advanced haptic pattern, 
+        /// </summary>
+        /// <param name="ios"></param>
+        /// <param name="iOSJSONString"></param>
+        /// <param name="android"></param>
+        /// <param name="androidPattern"></param>
+        /// <param name="androidAmplitudes"></param>
+        /// <param name="androidRepeat"></param>
+        /// <param name="vibrateAndroidIfNoSupport"></param>
+        /// <param name="rumble"></param>
+        /// <param name="rumblePattern"></param>
+        /// <param name="rumbleLowFreqAmplitudes"></param>
+        /// <param name="rumbleHighFreqAmplitudes"></param>
+        /// <param name="rumbleRepeat"></param>
+        /// <param name="fallbackOldiOS"></param>
+        /// <param name="coroutineSupport"></param>
+        /// <param name="controllerID"></param>
+        public static void AdvancedHapticPattern(bool ios, string iOSJSONString,
+                                                bool android, long[] androidPattern, int[] androidAmplitudes, int androidRepeat,
+                                                bool vibrateAndroidIfNoSupport,
+                                                bool rumble, 
+                                                long[] rumblePattern, int[] rumbleLowFreqAmplitudes, int[] rumbleHighFreqAmplitudes, int rumbleRepeat,
+                                                HapticTypes fallbackOldiOS = HapticTypes.None,
+                                                MonoBehaviour coroutineSupport = null, int controllerID = -1, bool threaded = false)
+        {
+            if (!_vibrationsActive)
+            {
+                return;
+            }
+
+            DebugLog("[MMVibrationManager] Advanced Haptic Pattern");
+
+            if (Android())
+            {
+                if (!MMNVAndroid.AndroidHasAmplitudeControl() && !vibrateAndroidIfNoSupport)
+                {
+                    return;
+                }
+                MMNVAndroid.AndroidVibrate(androidPattern, androidAmplitudes, androidRepeat, threaded);
+            }
+            else if (iOS())
+            {
+                if ((iOSVersion >= 13) && HapticsSupported())
+                {
+                    MMNViOSCoreHaptics.PlayCoreHapticsFromJSON(iOSJSONString, threaded);
+                    _hapticsPlayedOnce = true;
+                }
+                else
+                {
+                    MMNViOS.iOSTriggerHaptics(fallbackOldiOS);
+                }
+            }
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+            if (coroutineSupport != null)
+            {
+                MMNVRumble.Rumble(rumblePattern, rumbleLowFreqAmplitudes, rumbleHighFreqAmplitudes, rumbleRepeat, coroutineSupport, controllerID);
+            }
+#endif
+        }
+
+        // DEBUG -------------------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// Outputs the specified string to the console if in debug mode
+        /// </summary>
+        /// <param name="log"></param>
+        private static void DebugLog(string log)
+        {
+            if (_debugLogActive)
+            {
+                Debug.Log(log);
+            }
+        }
+
+        /// <summary>
+        /// Remaps value x between AB to CD
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <param name="C"></param>
+        /// <param name="D"></param>
+        /// <returns></returns>
+        public static float Remap(float x, float A, float B, float C, float D)
+        {
+            float remappedValue = C + (x - A) / (B - A) * (D - C);
+            return remappedValue;
+        }
+    }
 }

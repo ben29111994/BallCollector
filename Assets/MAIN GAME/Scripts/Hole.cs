@@ -44,7 +44,7 @@ public class Hole : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         other.GetComponent<SphereCollider>().isTrigger = false;
-        var prefab = PoolManager.instance.GetObject(PoolManager.NameObject.pixelExplode);
+        var prefab = PoolManager.Instance.GetObject(PoolManager.NameObject.pixelExplode);
         if (prefab != null)
         {
             prefab.SetActive(true);

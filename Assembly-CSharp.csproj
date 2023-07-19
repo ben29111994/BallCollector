@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_3_4;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_IOS;TEXTCORE_1_0_OR_NEWER;ENABLE_RUNTIME_GI;ENABLE_GAMECENTER;ENABLE_NETWORK;ENABLE_IOS_ON_DEMAND_RESOURCES;ENABLE_IOS_APP_SLICING;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;PLATFORM_SUPPORTS_ADS_ID;SUPPORT_ENVIRONMENT_VARIABLES;PLATFORM_SUPPORTS_PROFILER;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_ETC_COMPRESSION;UNITY_IPHONE_API;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;UNITY_IOS;PLATFORM_IPHONE;UNITY_IPHONE;UNITY_HAS_GOOGLEVR;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;GPU_INSTANCER;CROSS_PLATFORM_INPUT;MOBILE_INPUT;OBI_ONI_SUPPORTED;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_3_4;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_IOS;TEXTCORE_1_0_OR_NEWER;ENABLE_RUNTIME_GI;ENABLE_GAMECENTER;ENABLE_NETWORK;ENABLE_IOS_ON_DEMAND_RESOURCES;ENABLE_IOS_APP_SLICING;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;PLATFORM_SUPPORTS_ADS_ID;SUPPORT_ENVIRONMENT_VARIABLES;PLATFORM_SUPPORTS_PROFILER;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_ETC_COMPRESSION;UNITY_IPHONE_API;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;UNITY_IOS;PLATFORM_IPHONE;UNITY_IPHONE;UNITY_HAS_GOOGLEVR;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;GPU_INSTANCER;CROSS_PLATFORM_INPUT;MOBILE_INPUT;OBI_ONI_SUPPORTED;MOREMOUNTAINS_NICEVIBRATIONS;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -58,57 +58,88 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.4f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\ILRD\TopOn\GATopOnIntegration.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\ObjectSceneMove.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Manager\ShakeManager.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerRuntimeData.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\CustomComputeShader\Scripts\BoidController.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Wrapper\GA_UWPWrapper.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerShaderBindingsExtention.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\AnimateCutout.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerShaderBindings.cs" />
-    <Compile Include="Assets\NiceVibrations\Demo\Scripts\NiceVibrationsDemoManager.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Example Scenes\Tutorial Scenes\Files\Scripts\CapsuleFromLineRenderer.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Enums.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Wrapper\GA_iOSWrapper.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\DitheringModel.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\ILRD\GameAnalyticsILRD.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\State\GAState.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Wrapper\GA_AndroidWrapper.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerDetailPrototype.cs" />
+    <Compile Include="Assets\AppsFlyer\IAppsFlyerConversionData.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Manager\AppInfo.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\MotionBlurModel.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\PrefabInstancing\Scripts\SpaceshipMobileJoystick.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\ATT\GameAnalyticsATTClient.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Resource.cs" />
+    <Compile Include="Assets\AppsFlyer\IAppsFlyerNativeBridge.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\Destroyer.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Business.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\UpdateWorldPos.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\SendBusinessEvent.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Core\AdvancedDissolveProperties.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\Hole.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Controller\SwipeController.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\SpotLight_LineRenderer.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Example Scenes\Tutorial Scenes\Files\Scripts\CameraOrbitalMove.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerDrawCallColorDebugger.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\PostProcessingProfile.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\ChromaticAberrationModel.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Systems\UpgradeSystem.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Example Scenes\Tutorial Scenes\Files\Scripts\AnimateCutout.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\UIEventReciever_ExampleScene_Mask_Plane.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerCameraData.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\ColorVariations\Scripts\ColorVariations.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Mask_Sphere.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\PlaySound.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\GrainComponent.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\TrignometricScaling.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Wrapper\GA_TizenWrapper.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\AnimalStats.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Wrapper\GA_tvOSWrapper.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\AmbientOcclusionModel.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Wrapper\GA_WebGLWrapper.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\ParticleEffectsLibrary.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\SendResourceEvent.cs" />
+    <Compile Include="Assets\AppsFlyer\IAppsFlyerValidateReceipt.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GAValidator.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\IGameAnalyticsATTListener.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\PostProcessingModel.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\ChromaticAberrationComponent.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\SurfaceRotation.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\KillSwitch.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\IsRemoteConfigsReady.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Ads.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\GetABTestingVariantId.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\SetCustomDimension.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Setup\Settings.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Mask_Box.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Controller\UpgradeController.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\AddRemoveInstances.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Test.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\MotionBlurComponent.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerTreePrototype.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\ATT\GameAnalyticsATTObjCBridge.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\_SharedResources\Scripts\FPS.cs" />
+    <Compile Include="Assets\AppsFlyer\AppsFlyerAndroid.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Manager\ReferenceManager.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\EyeAdaptationModel.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerTreeManager.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\Standard Assets\Environment\Water\Water\Scripts\Water.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\SendProgressionEvent.cs" />
+    <Compile Include="Assets\AppsFlyer\AppsFlyeriOS.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\_SharedResources\Scripts\FPController.cs" />
+    <Compile Include="Assets\AppsFlyer\AFMiniJSON.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Cutout.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Controllers\AdvancedDissolvePropertiesController.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\UIEventReciever_ExampleScene_Mask_Cone.cs" />
@@ -123,45 +154,55 @@
     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\API\GPUInstancerAPI.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\DeathButtonControl.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Error.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\GetRemoteConfigsValueAsString.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerDetailManager.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Systems\Disable\DisableByTime.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerPrefabRuntimeHandler.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\PeriodicShake.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
+    <Compile Include="Assets\_MainGame\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\LookAt.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Controllers\AdvancedDissolveKeywordsController.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Effects\SplashEffect.cs" />
+    <Compile Include="Assets\AppsFlyer\IAppsFlyerAndroidBridge.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\ColorGradingComponent.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimSpeed.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\CameraRatio.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\MovementState.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Controller\HandController.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\Tile.cs" />
     <Compile Include="Assets\Unity UI Scroll Snaps 0.8.2\Scripts\HelperClasses\Scroller.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Mask_Cone.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\PanelControl.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerCameraHandler.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\PostProcessingContext.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Mask_Cylinder_Alt.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\GrainModel.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\SendDesignEvent.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Edge.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
+    <Compile Include="Assets\_MainGame\Tools\Simple Mesh Combine\Scripts C\SimpleMeshCombineMaster.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\AmbientOcclusionComponent.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\_SharedResources\Scripts\SpaceshipCameraRig.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerGUIInfo.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\DepthOfFieldModel.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\DepthOfFieldComponent.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Debug.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\PoolManager.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\ColorGradingCurve.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerPrefab.cs" />
+    <Compile Include="Assets\AppsFlyer\IAppsFlyerUserInvite.cs" />
     <Compile Include="Assets\ShaderDissolve\Dissolve.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\IronSource\GAIronSourceIntegration.cs" />
+    <Compile Include="Assets\AppsFlyer\AFInAppEvents.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\BloomModel.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXSceneManager.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\FogComponent.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\GameAnalytics.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Design.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\PEButtonScript.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerPrefabListRuntimeHandler.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Manager\AudioManager.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\UIEventReciever_ExampleScene_Mask_Box.cs" />
     <Compile Include="Assets\PowerUps FullPackage\Scripts\PowerUpAnimation.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\UserLutComponent.cs" />
@@ -169,59 +210,71 @@
     <Compile Include="Assets\GPUInstancer\Demos\_SharedResources\Scripts\ShieldImpact.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\UIEventReciever_ExampleScene_Mask_Spere.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\DitheringComponent.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Progression.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Helper\AdvancedDissolveTransformScaleToRadius.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\VignetteModel.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\_SharedResources\Scripts\FlyCamera.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\ScreenSpaceReflectionComponent.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\RandomAnimalPlacer.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\UI\CompleteUI.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Manager\UIManager.cs" />
     <Compile Include="Assets\Unity UI Scroll Snaps 0.8.2\Scripts\Componets\DirectionalScrollSnap.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballGroupAttribute.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXMouseOrbit.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\Contract\GPUInstancerManager.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerSettingsExtention.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Systems\Disable\DisableSystem.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\UserLutModel.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\WanderScript.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\AnimalState.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\AddModifyTerrainsRuntime\Scripts\TerrainGenerator.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\DetailInstancing\Scripts\DetailDemoSceneController.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\PrefabsWithoutGameObjects\Scripts\PrefabsWithoutGameObjects.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\MapFlowEffect.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerPrefabCell.cs" />
+    <Compile Include="Assets\AppsFlyer\AppsFlyerObjectScript.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerTerrainProxy.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
+    <Compile Include="Assets\_MainGame\Scripts\Controller\CameraController.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
+    <Compile Include="Assets\AppsFlyer\AppsFlyerEventArgs.cs" />
+    <Compile Include="Assets\AppsFlyer\IAppsFlyerIOSBridge.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\PostProcessingBehaviour.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimationControl.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\GetABTestingId.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\ObjectRandomMove.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Helper\AdvancedDissolveSpotLightToConeSmooth.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXButtonScript.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Wrapper\GA_Wrapper.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\UIEventReciever_Cutout_And_Edge.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_SpecialEvents.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Manager\DataManager.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\PostProcessingComponent.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerSpatialPartitioningData.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\WaveAnimation.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Utilities\GA_MiniJson.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\SendErrorEvent.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\ILRD\Aequus\GAAequusIntegration.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\PEDestoryTimed.cs" />
     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXLightFade.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\_SharedResources\Scripts\ColorPicker.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\PrefabInstancing\Scripts\AstroidGenerator.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\AudioManager.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerSettings.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\Contract\GPUInstancerCell.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\TrignometricRotation.cs" />
+    <Compile Include="Assets\AppsFlyer\AppsFlyer.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\FogModel.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\IdleState.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\_SharedResources\Scripts\GrassMowerController.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Mopub\GAMopubIntegration.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerPrefabPrototype.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerBillboardAtlasBindings.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\ParticleEffectsShowcase\Scripts\UICanvasManager.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerConstants.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\FxaaComponent.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\ScreenSpaceReflectionModel.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Systems\Disable\DisableByDistance.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Controllers\AdvancedDissolveController.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\LevelGenerator.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Wrapper\GA_MonoWrapper.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerTerrainSettings.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerLODColorDebugger.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\AnimalManager.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerInstanceRemover.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerTreeType.cs" />
@@ -229,33 +282,46 @@
     <Compile Include="Assets\NiceVibrations\Common\Scripts\MMVibrationManager.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\BunnyMove.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerFloatingOriginHandler.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Manager\VibrationManager.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Mask_XYZ_Axis.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Mask_Plane.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\TrignometricMovement.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\BuiltinDebugViewsComponent.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\HandleTextFile.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\Standard Assets\Effects\ImageEffects\Scripts\GlobalFog.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerHiZOcclusionGenerator.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\SendAdEvent.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Core\Draw\DrawLineRender.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Controllers\AdvancedDissolveGeometricCutoutController.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Controllers\Controller_Mask_Cylinder.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerEventType.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\SoundManager.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\UI\GemObject.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\StaticFunction\LineSmoother.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Manager\EffectManager.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\TreeInstancing\Scripts\TreeDemoSceneController.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\StaticFunction\SimpleMathf.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\Contract\GPUInstancerPrototype.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\EyeAdaptationComponent.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\PanelControll.cs" />
+    <Compile Include="Assets\_MainGame\Tools\Simple Mesh Combine\Scripts C\Examples\RunTimeCombineAndRelease.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Integration\GPUInstancerMapMagicIntegration.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\UIEventReciever_ExampleScene_Mask_XYZ_Axis.cs" />
     <Compile Include="Assets\Unity UI Scroll Snaps 0.8.2\Scripts\Componets\OmniDirectionalScrollSnap.cs" />
+    <Compile Include="Assets\_MainGame\Tools\Simple Mesh Combine\Scripts C\SimpleMeshCombine.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\OnCollected.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Core\AdvancedDissolveKeywords.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\AddRuntimeCreatedGameObjects\Scripts\AddRuntimeCreatedGameObjects.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Analytic\ClientWisdomManager.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Setup.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\GAInitialize.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Fyber\GAFyberIntegration.cs" />
     <Compile Include="Assets\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Example Scenes\Tutorial Scenes\Files\Scripts\AnimateGI.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\BuiltinDebugViewsModel.cs" />
+    <Compile Include="Assets\MAIN GAME\Scripts\Controller\TutorialController.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\GPUInstancerModificationCollider.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Scripts\ILRD\Max\GAMaxIntegration.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\UIEventReciever_ExampleScene_Mask_Cylinder.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Components\BloomComponent.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\Static\GPUInstancerUtility.cs" />
@@ -264,11 +330,13 @@
   <ItemGroup>
     <None Include="Assets\Resources\106.txt" />
     <None Include="Assets\Resources\35.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\GPUInstancer\Resources\Compute\CSInstancedCameraCalculationKernelVR.compute" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
     <None Include="Assets\Resources\18.txt" />
     <None Include="Assets\Resources\19.txt" />
     <None Include="Assets\Resources\11.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Resources\8.txt" />
     <None Include="Assets\Resources\14.txt" />
     <None Include="Assets\Resources\54.txt" />
@@ -282,13 +350,13 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\GrainGen.shader" />
     <None Include="Assets\GPUInstancer\Shaders\Include\GPUIBillboardInclude.cginc" />
     <None Include="Assets\Resources\34.txt" />
-    <None Include="Assets\Low Poly Animated Animals\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA3.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
     <None Include="Assets\GPUInstancer\Resources\Compute\Include\Terrain.compute" />
     <None Include="Assets\VacuumShaders\Advanced Dissolve\Shaders\TextMesh Pro\TMPro.cginc" />
     <None Include="Assets\Resources\80.txt" />
     <None Include="Assets\GPUInstancer\Resources\Compute\CSTreeInstantiationKernel.compute" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Resources\108.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
     <None Include="Assets\Resources\87.txt" />
@@ -305,8 +373,10 @@
     <None Include="Assets\VacuumShaders\Advanced Dissolve\Shaders\Standard\UnityStandardCoreForward.cginc" />
     <None Include="Assets\Resources\44.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Core\Vertex.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\Resources\25.txt" />
     <None Include="Assets\Resources\83.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\TAA.cginc" />
     <None Include="Assets\Resources\72.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Nature\SoftOcclusion\UnityBuiltin2xTreeLibrary.cginc" />
@@ -339,9 +409,11 @@
     <None Include="Assets\GPUInstancer\Resources\Compute\Include\Random.compute" />
     <None Include="Assets\Resources\46.txt" />
     <None Include="Assets\Resources\13.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Resources\95.txt" />
     <None Include="Assets\GPUInstancer\Resources\Compute\CSInstancedBufferToTexture.compute" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Standard\UnityStandardCoreForward.cginc" />
+    <None Include="Assets\NiceVibrations\ThirdParty\Newtonsoft\NewtonsoftJsonLicense.txt" />
     <None Include="Assets\Resources\102.txt" />
     <None Include="Assets\Resources\84.txt" />
     <None Include="Assets\Resources\22.txt" />
@@ -350,7 +422,6 @@
     <None Include="Assets\GPUInstancer\Resources\Compute\CSInstancedRenderingVisibilityKernel.compute" />
     <None Include="Assets\Resources\86.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
-    <None Include="Assets\Low Poly Animated Animals\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc" />
     <None Include="Assets\Resources\71.txt" />
     <None Include="Assets\Resources\97.txt" />
     <None Include="Assets\Resources\10.txt" />
@@ -368,29 +439,37 @@
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Core\Shadow.cginc" />
     <None Include="Assets\Resources\94.txt" />
     <None Include="Assets\Resources\98.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Resources\42.txt" />
     <None Include="Assets\GPUInstancer\Shaders\Include\GPUInstancerInclude.cginc" />
     <None Include="Assets\Resources\56.txt" />
     <None Include="Assets\NiceVibrations\Common\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\Resources\53.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\GPUInstancer\Resources\Compute\CSBillboard.compute" />
     <None Include="Assets\Demigiant\DOTween\DOTween.dll" />
     <None Include="Assets\Resources\30.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ACES.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\Resources\64.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
     <None Include="Assets\Resources\74.txt" />
     <None Include="Assets\Resources\79.txt" />
     <None Include="Assets\Resources\81.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Resources\57.txt" />
     <None Include="Assets\VacuumShaders\Advanced Dissolve\Shaders\TextMesh Pro\TMPro_Surface.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
     <None Include="Assets\Resources\27.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Core\Limits.cginc" />
     <None Include="Assets\Resources\3.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\GPUInstancer\Resources\Compute\Include\Matrix.compute" />
     <None Include="Assets\Resources\7.txt" />
     <None Include="Assets\Resources\58.txt" />
@@ -402,6 +481,7 @@
     <None Include="Assets\Resources\100.txt" />
     <None Include="Assets\Resources\73.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
+    <None Include="Assets\NiceVibrations\ThirdParty\Newtonsoft\Newtonsoft.Json.dll" />
     <None Include="Assets\Resources\15.txt" />
     <None Include="Assets\Resources\47.txt" />
     <None Include="Assets\Resources\4.txt" />
@@ -411,8 +491,10 @@
     <None Include="Assets\Resources\9.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\cginc\Defines.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Particles\UnityStandardParticles.cginc" />
+    <None Include="Assets\NiceVibrations\readme.txt" />
     <None Include="Assets\Resources\109.txt" />
     <None Include="Assets\Resources\88.txt" />
     <None Include="Assets\Resources\36.txt" />
@@ -426,6 +508,7 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
     <None Include="Assets\Resources\75.txt" />
     <None Include="Assets\VacuumShaders\Advanced Dissolve\Shaders\TextMesh Pro\TMPro_Properties.cginc" />
+    <None Include="Assets\NiceVibrations\license.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\One Directional Light\ForwardBase.cginc" />
     <None Include="Assets\Resources\99.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
@@ -438,6 +521,7 @@
     <None Include="Assets\Resources\107.txt" />
     <None Include="Assets\GPUInstancer\Shaders\Include\GPUIStandardInclude.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\SpeedTree\SpeedTree8Common.cginc" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\cginc\SpaceTransforms.cginc" />
     <None Include="Assets\Resources\114.txt" />
@@ -453,10 +537,12 @@
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Standard\UnityStandardConfig.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
     <None Include="Assets\VacuumShaders\Advanced Dissolve\Shaders\Particles\AdvancedDissolveUnityStandardParticleShadow.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Resources\67.txt" />
     <None Include="Assets\Resources\29.txt" />
     <None Include="Assets\Resources\96.txt" />
     <None Include="Assets\Resources\6.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Resources\26.txt" />
     <None Include="Assets\VacuumShaders\Advanced Dissolve\Shaders\Standard\UnityStandardCore.cginc" />
     <None Include="Assets\Resources\49.txt" />
@@ -464,9 +550,11 @@
     <None Include="Assets\Resources\82.txt" />
     <None Include="Assets\GPUInstancer\Resources\Compute\Include\DataModel.compute" />
     <None Include="Assets\Resources\78.txt" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Resources\21.txt" />
     <None Include="Assets\Resources\77.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\cginc\Variables.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Resources\104.txt" />
     <None Include="Assets\Resources\62.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Core\VertexLM.cginc" />
@@ -474,6 +562,7 @@
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\SpeedTree\SpeedTreeCommon.cginc" />
     <None Include="Assets\Resources\16.txt" />
     <None Include="Assets\Resources\89.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\Resources\59.txt" />
     <None Include="Assets\Resources\17.txt" />
     <None Include="Assets\Resources\66.txt" />
@@ -727,6 +816,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\NiceVibrations\ThirdParty\Newtonsoft\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.4f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -1109,29 +1201,11 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.4f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Parabox.Stl.Editor">
-      <HintPath>Library\ScriptAssemblies\Parabox.Stl.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -1142,23 +1216,50 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Parabox.Stl">
+      <HintPath>Library\ScriptAssemblies\Parabox.Stl.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Parabox.Stl.Editor">
+      <HintPath>Library\ScriptAssemblies\Parabox.Stl.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.State.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
@@ -1171,15 +1272,6 @@
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Parabox.Stl">
-      <HintPath>Library\ScriptAssemblies\Parabox.Stl.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1194,6 +1286,18 @@
     <ProjectReference Include="HeurekaGames.Utils.csproj">
       <Project>{045DA0B2-6CA3-5399-518C-E49261D604F0}</Project>
       <Name>HeurekaGames.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.NiceVibrations.Haptics.csproj">
+      <Project>{1C8137F6-64A5-C218-28F3-A9B17B0942ED}</Project>
+      <Name>MoreMountains.NiceVibrations.Haptics</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.NiceVibrations.Editor.csproj">
+      <Project>{A55643B8-91E2-D384-357C-A88D317431D0}</Project>
+      <Name>MoreMountains.NiceVibrations.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.NiceVibrations.csproj">
+      <Project>{A4071E7D-3319-9E91-866A-B0C4FB132C7D}</Project>
+      <Name>MoreMountains.NiceVibrations</Name>
     </ProjectReference>
     <ProjectReference Include="SimpleInput.Editor.csproj">
       <Project>{E37E3D6D-AFE0-494D-F238-D84FA6407B1A}</Project>

@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_3_4;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_IOS;TEXTCORE_1_0_OR_NEWER;ENABLE_RUNTIME_GI;ENABLE_GAMECENTER;ENABLE_NETWORK;ENABLE_IOS_ON_DEMAND_RESOURCES;ENABLE_IOS_APP_SLICING;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;PLATFORM_SUPPORTS_ADS_ID;SUPPORT_ENVIRONMENT_VARIABLES;PLATFORM_SUPPORTS_PROFILER;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_ETC_COMPRESSION;UNITY_IPHONE_API;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;UNITY_IOS;PLATFORM_IPHONE;UNITY_IPHONE;UNITY_HAS_GOOGLEVR;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_4_6;NET_UNITY_4_8;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;GPU_INSTANCER;CROSS_PLATFORM_INPUT;MOBILE_INPUT;OBI_ONI_SUPPORTED;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION</DefineConstants>
+    <DefineConstants>UNITY_2022_3_4;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_IOS;TEXTCORE_1_0_OR_NEWER;ENABLE_RUNTIME_GI;ENABLE_GAMECENTER;ENABLE_NETWORK;ENABLE_IOS_ON_DEMAND_RESOURCES;ENABLE_IOS_APP_SLICING;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;PLATFORM_SUPPORTS_ADS_ID;SUPPORT_ENVIRONMENT_VARIABLES;PLATFORM_SUPPORTS_PROFILER;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_ETC_COMPRESSION;UNITY_IPHONE_API;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;UNITY_IOS;PLATFORM_IPHONE;UNITY_IPHONE;UNITY_HAS_GOOGLEVR;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_4_6;NET_UNITY_4_8;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;GPU_INSTANCER;CROSS_PLATFORM_INPUT;MOBILE_INPUT;OBI_ONI_SUPPORTED;MOREMOUNTAINS_NICEVIBRATIONS;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -61,6 +61,7 @@
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Material Editors\Built-in\VertexLitShaderGUI.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Models\BloomModelEditor.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerPreviewDrawer.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_AutoRun.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordCutoutSimpleMappingTypeDrawer.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerDefines.cs" />
     <Compile Include="Assets\PostProcessing\Editor\PropertyDrawers\TrackballGroupDrawer.cs" />
@@ -70,16 +71,21 @@
     <Compile Include="Assets\PostProcessing\Editor\Models\EyeAdaptationModelEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordCutoutVolumetricsCountDrawer.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Material Editors\Built-in\DefaultUnlitShaderGUI.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\Editor\SendResourceEventActionEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Base\EditorGUIHelper.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_UpdateWindow.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Models\AmbientOcclusionModelEditor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\PostProcessingFactory.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Material Editors\Built-in\OneDirectionalLightShaderGUI.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\Editor\SendProgressionEventActionEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Utilities\AdvancedDissolveRemoveObsoleteKeywords.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerManagerEditor.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerPrefabEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordEdgeBaseSourceDrawer.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\EditorGUIHelper.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_SignUp.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordsDrawer.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_AssetPostprocessor.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerEditor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Monitors\WaveformMonitor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Monitors\VectorscopeMonitor.cs" />
@@ -88,7 +94,6 @@
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\Tools\GPUInstancerPrefabReplacerWindow.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordEdgeUVDistortionSourceDrawer.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Models\VignetteModelEditor.cs" />
-    <Compile Include="Assets\Low Poly Animated Animals\- Scripts\AnimalScripts\Editor\AnimalManagerEditor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\PostProcessingMonitor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\AdvancedDissolveColorRGBDrawer.cs" />
     <Compile Include="Assets\PowerUps FullPackage\Scripts\Editor\PowerUpAnimationInspector.cs" />
@@ -111,6 +116,7 @@
     <Compile Include="Assets\Unity UI Scroll Snaps 0.8.2\Editor\DirectionalScrollSnapEditor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Material Editors\Built-in\DefaultLitShaderGUI.cs" />
+    <Compile Include="Assets\AppsFlyer\Editor\AppsFlyerObjectEditor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Models\ChromaticAberrationEditor.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerPrefabManagerEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordEdgeAdditionalColorSourceDrawer.cs" />
@@ -120,10 +126,13 @@
     <Compile Include="Assets\PostProcessing\Editor\Models\ScreenSpaceReflectionModelEditor.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerDetailManagerEditor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Monitors\ParadeMonitor.cs" />
+    <Compile Include="Assets\_MainGame\Tools\Simple Mesh Combine\Scripts C\Editor\SimpleMeshCombineEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\AdvancedDissolveCutoutDrawer.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Models\ColorGradingModelEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Script Editors\AdvancedDissolveGeometricCutoutControllerEditor.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_PostprocessBuild.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Models\DepthOfFieldModelEditor.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_EditorUtilities.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\AdvancedDissolveToggleFloatDrawer.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\Integration\GPUInstancerGaiaExtension.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Material Editors\Built-in\StandardShaderGUI.cs" />
@@ -135,16 +144,21 @@
     <Compile Include="Assets\PostProcessing\Editor\Models\UserLutModelEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Property Drawers\Keywords\AdvancedDissolveKeywordCutoutVolumetricTypeDrawer.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Monitors\HistogramMonitor.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GameAnalyticsInspector.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\CurveEditor.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\EditorResources.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\Integration\GPUInstancerMapMagicEditor.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Material Editors\SpeedTree\SpeedTreeMaterialInspector.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\Extention\GPUInstancerBillboardExtention.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_SettingsInspector.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Models\FogModelEditor.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\GPUInstancerTerrainProxyEditor.cs" />
     <Compile Include="Assets\Editor\StandardShaderGUI.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Utilities\AdvancedDissolveUpdateShaders.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Editor\Tools\GPUInstancerPrefabImporterWindow.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_Menu.cs" />
+    <Compile Include="Assets\GameAnalytics\Editor\GA_ContinuationManager.cs" />
+    <Compile Include="Assets\GameAnalytics\Plugins\Playmaker\Editor\PlayMakerPresenceCheck.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Utils\FxStyles.cs" />
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Editor\Material Editors\AdvancedDissolveMaterialProperties.cs" />
     <Compile Include="Assets\PostProcessing\Editor\Models\MotionBlurModelEditor.cs" />
@@ -643,6 +657,9 @@
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\NiceVibrations\ThirdParty\Newtonsoft\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
@@ -1042,35 +1059,17 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.4f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Parabox.Stl.Editor">
-      <HintPath>Library\ScriptAssemblies\Parabox.Stl.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -1081,23 +1080,50 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Parabox.Stl">
+      <HintPath>Library\ScriptAssemblies\Parabox.Stl.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Parabox.Stl.Editor">
+      <HintPath>Library\ScriptAssemblies\Parabox.Stl.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.State.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
@@ -1110,15 +1136,6 @@
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Parabox.Stl">
-      <HintPath>Library\ScriptAssemblies\Parabox.Stl.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1141,6 +1158,18 @@
     <ProjectReference Include="HeurekaGames.Utils.csproj">
       <Project>{045DA0B2-6CA3-5399-518C-E49261D604F0}</Project>
       <Name>HeurekaGames.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.NiceVibrations.Haptics.csproj">
+      <Project>{1C8137F6-64A5-C218-28F3-A9B17B0942ED}</Project>
+      <Name>MoreMountains.NiceVibrations.Haptics</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.NiceVibrations.Editor.csproj">
+      <Project>{A55643B8-91E2-D384-357C-A88D317431D0}</Project>
+      <Name>MoreMountains.NiceVibrations.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MoreMountains.NiceVibrations.csproj">
+      <Project>{A4071E7D-3319-9E91-866A-B0C4FB132C7D}</Project>
+      <Name>MoreMountains.NiceVibrations</Name>
     </ProjectReference>
     <ProjectReference Include="SimpleInput.Editor.csproj">
       <Project>{E37E3D6D-AFE0-494D-F238-D84FA6407B1A}</Project>

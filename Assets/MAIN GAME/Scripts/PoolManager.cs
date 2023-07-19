@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    public static PoolManager instance;
+    public static PoolManager Instance;
 
     private void Awake()
     {
-        instance = (instance == null) ? this : instance;
+        Instance = (Instance == null) ? this : Instance;
     }
 
     [Header("Pool Manager")]
