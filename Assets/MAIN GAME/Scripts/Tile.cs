@@ -9,18 +9,20 @@ public class Tile : MonoBehaviour
     public bool isCheck = false;
     public bool isMagnet = false;
     public bool isHole = false;
+    public int ballLevel;
     GameController gameController;
     Rigidbody rigid;
 
     private void OnEnable()
     {
-        Init();
+        Init(ballLevel);
         gameController = GameObject.FindGameObjectWithTag("Player").GetComponent<GameController>();
         rigid = GetComponent<Rigidbody>();
     }
 
-    public void Init()
+    public void Init(int level)
     {
+        ballLevel = level - 1;
         if (meshRenderer == null)
             meshRenderer = GetComponent<Renderer>();
     }

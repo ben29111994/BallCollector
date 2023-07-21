@@ -18,35 +18,36 @@ public class GemObject : MonoBehaviour
 
     private void OnEnable()
     {
-        completeUI = UIManager.Instance.CompleteUI.GetComponent<CompleteUI>();
         StartCoroutine(C_Animation());
     }
 
     private IEnumerator C_Animation()
     {
-        int coinEarn= (int)(UIManager.Instance.coinEarn / listGem.Count);
+        //int coinEarn = GameController.coinEarn;
        
         for (int i = 0; i < listGem.Count; i++)
         {
             GameObject go = listGem[i];
             go.transform.position = startPos;
             go.transform.localScale = Vector3.one;
-            float _time = Random.Range(0.4f, 0.5f);
-            float _jump = Random.Range(-4.0f, 4.0f);
-            go.transform.DOJump(target.transform.position, _jump, 1, _time).SetEase(Ease.InOutSine);
-            go.transform.DOScale(Vector3.one * 0.6f, _time).SetEase(Ease.InOutSine).OnComplete(() => OnCompelte(go,coinEarn));
-            completeUI.CurrentCoinEarn -= coinEarn;
+            float _time = 1.5f;
+            float _jump = Random.Range(-4f, 4f);
+            //go.transform.DOJump(target.transform.position, _jump, 1, _time).SetEase(Ease.InOutSine);
+            go.transform.DOLocalMoveY(Random.Range(go.transform.localPosition.y + 100, go.transform.localPosition.y - 100), _time/2).SetEase(Ease.InOutSine);
+            go.transform.DOLocalMoveX(Random.Range(-100.0f, 100.0f), _time/2).SetEase(Ease.InOutSine).OnComplete(() => go.transform.DOJump(target.transform.position, _jump, 1, _time/2).SetEase(Ease.InOutSine));
+            go.transform.DOScale(Vector3.one * 0.6f, _time).SetEase(Ease.InOutSine);
+            //completeUI.CurrentCoinEarn -= coinEarn;
 
-            if(i == listGem.Count - 1)
-            {
-                completeUI.CurrentCoinEarn = 0;
-                completeUI.coinEarnObject.SetActive(false);
-            }
-            yield return new WaitForSeconds(Random.Range(0.02f, 0.04f));
+            //if(i == listGem.Count - 1)
+            //{
+            //    completeUI.CurrentCoinEarn = 0;
+            //    completeUI.coinEarnObject.SetActive(false);
+            //}
+            //yield return new WaitForSeconds(Random.Range(0.02f, 0.04f));
         }
 
         yield return new WaitForSeconds(0.6f);
-        completeUI.Show_ContinueButton();
+        //completeUI.Show_ContinueButton();
     }
 
     private void OnCompelte(GameObject go,int coinEarn)

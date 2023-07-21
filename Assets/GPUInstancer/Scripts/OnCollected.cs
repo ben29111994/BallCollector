@@ -44,7 +44,7 @@ public class OnCollected : MonoBehaviour
                 if (!isUpgrading)
                 {
                     isUpgrading = true;
-                    UpgradeTimer(1);
+                    //UpgradeTimer(1);
                     UpgradeSize(1);
                     UpgradePower(1);
                 }
@@ -75,24 +75,25 @@ public class OnCollected : MonoBehaviour
 
     public void UpgradeTimer(int level)
     {
-        var value = level * 5;
+        var value = 15 + level * 2;
         GameController.Instance.UpdateTimer(value);
     }
 
     public void UpgradeSize(int level)
     {
         var scaleValue = transform.parent.transform.parent.transform.localScale;
-        transform.parent.transform.parent.transform.DOScale(new Vector3(scaleValue.x + 0.2f * level, scaleValue.y + 0.2f * level, scaleValue.z + 0.2f * level), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        transform.parent.transform.parent.transform.DOScale(new Vector3(scaleValue.x + 0.15f * level, scaleValue.y + 0.15f * level, scaleValue.z + 0.15f * level), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
             limit += 100 * level;
             isUpgrading = false;
         }); ;
-        DOTween.To(() => GameController.Instance.CameraOffsetY, x => GameController.Instance.CameraOffsetY = x, GameController.Instance.CameraOffsetY + 1.05f * level, 0.5f);
-        DOTween.To(() => GameController.Instance.CameraOffsetZ, x => GameController.Instance.CameraOffsetZ = x, GameController.Instance.CameraOffsetZ + 1.05f * level, 0.5f);
+        DOTween.To(() => GameController.Instance.CameraOffsetY, x => GameController.Instance.CameraOffsetY = x, GameController.Instance.CameraOffsetY + 2 * level, 0.5f);
+        DOTween.To(() => GameController.Instance.CameraOffsetZ, x => GameController.Instance.CameraOffsetZ = x, GameController.Instance.CameraOffsetZ + 2 * level, 0.5f);
     }
 
     public void UpgradePower(int level)
     {
-        GameController.Instance.forceFactor += 2000*level;
+        GameController.Instance.funnel.GetComponent<Renderer>().material.DOColor(Color.green, 0.4f).SetLoops(2, LoopType.Yoyo);
+        GameController.Instance.forceFactor += 4000*level;
     }
 }

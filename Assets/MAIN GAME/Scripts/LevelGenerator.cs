@@ -11,18 +11,19 @@ public class LevelGenerator : MonoBehaviour {
     public GameObject parentObject;
     public int numOfStacks;
     public int totalBall;
+    public Transform parentGamplay1;
     Transform currentParent;
     Vector3 originalPos;
     float width;
 
-    void OnEnable()
+    void Start()
     {
         Instance = this;
-        var currentLevel = PlayerPrefs.GetInt("currentLevel");
+        var currentLevel = DataManager.Instance.LevelGame;
         if(currentLevel > list2DMaps.Count)
         {
             currentLevel = 0;
-            PlayerPrefs.SetInt("currentLevel", currentLevel);
+            DataManager.Instance.LevelGame = currentLevel;
         }
         map = list2DMaps[currentLevel];
         originalPos = parentObject.transform.position;
@@ -87,6 +88,10 @@ public class LevelGenerator : MonoBehaviour {
         //var sizeValue = (level + 1) * 3;
         //Vector3 scale = Vector3.one * ratio * sizeValue * 0.1f;
         Vector3 scale = Vector3.one * Mathf.Pow(1.5f, level) / 10;
+        if (level < 3)
+        {
+            scale = Vector3.one * Mathf.Pow(1.5f, level) / 5;
+        }
 
         if (pixelColor.a == 0 || pixelColor == null)
         {
@@ -100,7 +105,7 @@ public class LevelGenerator : MonoBehaviour {
             GameController.totalPixel++;
         }
 
-        instance.Init();
+        instance.Init(level);
         instance.SetTransfrom(pos, scale);
         instance.SetColor(pixelColor);
     }

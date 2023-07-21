@@ -103,9 +103,11 @@ public class Upgrade_ItemUI : MonoBehaviour
 
     public void OnClink_Buy()
     {
-        int myCoin = 9999;
-        if (myCoin < Price) return;
-        myCoin -= Price;
+        //int myCoin = 9999;
+        //if (myCoin < Price) return;
+        //myCoin -= Price;
+        if (DataManager.Instance.Coin < Price) return;
+        DataManager.Instance.Coin -= Price;
         UpgradeSucces();
     }
 

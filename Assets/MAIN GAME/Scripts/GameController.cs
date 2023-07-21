@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
     public GameObject mapFlowEffect;
     public Transform magnetPoint;
     public GameObject winBG;
-    public AdvancedDissolveGeometricCutoutController controllerCutOut;
+    public GameObject gemAnim;
     public GameObject gameplay2;
 
     private void Awake()
@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
     public void UpdateTimer(int bonusValue)
     {
         timer += bonusValue;
-        timerTxt.text = ((int)timer).ToString();
+        timerTxt.text = ((int)timer).ToString() + "s";
     }
 
     private void FixedUpdate()
@@ -105,7 +105,12 @@ public class GameController : MonoBehaviour
         if (isPlaying)
         {
             timer -= Time.deltaTime;
-            timerTxt.text = ((int)timer).ToString();
+            timerTxt.text = ((int)timer).ToString() + "s";
+            if(timer <= 5)
+            {
+                timerTxt.color = Color.red;
+                timerTxt.transform.localScale = Vector3.one * 1.5f;
+            }
             if(timer <= 0)
             {
                 StartCoroutine(Win());
@@ -125,15 +130,7 @@ public class GameController : MonoBehaviour
                     }
                     else
                     {
-                        if (pixels[i].transform.localScale.x < transform.localScale.x / 5 || forceFactor > 7500)
-                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
-                        else if (pixels[i].transform.localScale.x < transform.localScale.x / 4 || forceFactor > 15000)
-                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
-                        else if (pixels[i].transform.localScale.x < transform.localScale.x / 3 || forceFactor > 20000)
-                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
-                        else if (pixels[i].transform.localScale.x < transform.localScale.x / 2 || forceFactor > 25000)
-                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
-                        else if (pixels[i].transform.localScale.x < transform.localScale.x || forceFactor > 30000)
+                        if (DataManager.Instance.SizeLevel >= pixels[i].GetComponent<Tile>().ballLevel)
                             pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
                         else
                         {
@@ -248,6 +245,7 @@ public class GameController : MonoBehaviour
         isHold = true;
     }
 
+    public static int coinEarn;
     IEnumerator Win()
     {
         yield return new WaitForSeconds(0.01f);
@@ -256,19 +254,23 @@ public class GameController : MonoBehaviour
             //AnalyticsManager.instance.CallEvent(AnalyticsManager.EventType.EndEvent);
             isPlaying = false;
             conffetiSpawn = Instantiate(conffeti);
-            winMenu_title.text = "LEVEL " + currentLevel.ToString();
+            //winMenu_title.text = "LEVEL " + currentLevel.ToString();
             winMenu_coin.text = coin.ToString();
             yield return new WaitForSeconds(0.1f);
             winBG.SetActive(true);
             winBG.GetComponent<MeshRenderer>().material.DOFade(1, 1);
             conffetiSpawn.transform.parent = Camera.main.transform;
-            conffetiSpawn.transform.localPosition = winBG.transform.localPosition;
+            conffetiSpawn.transform.localPosition = new Vector3(winBG.transform.localPosition.x, winBG.transform.localPosition.y - 20, winBG.transform.localPosition.z);
             winPanel.SetActive(true);
             //cointTxt.gameObject.SetActive(false);
+            timerTxt.gameObject.SetActive(false);
             levelProgress.gameObject.SetActive(false);
-            winMenu_coin.DOCounter(pixels.Count, 0, 1.5f);
+            winMenu_coin.text = (pixels.Count).ToString();
+            coinEarn = pixels.Count * 10;
+            gemAnim.SetActive(true);
             var bonusCoin = coin + pixels.Count * 10;
             cointTxt.DOCounter(coin, bonusCoin, 1.5f);
+            DataManager.Instance.Coin = bonusCoin;
         }
     }
 
@@ -288,19 +290,13 @@ public class GameController : MonoBehaviour
         bool isWin = false;
         totalBall = LevelGenerator.Instance.totalBall;
         var collectedPercentage = pixels.Count * 100 / totalBall;
-        Debug.LogError(collectedPercentage);
+        winBG.SetActive(false );
         if(collectedPercentage > 10)
         {
             isWin = true;
-            currentLevel++;
-            if (currentLevel > maxLevel)
-            {
-                currentLevel = 0;
-            }
-            PlayerPrefs.SetInt("currentLevel", currentLevel);
         }
 
-        GamePlayII.Instance.Active_GamePlayII(pixels.Count, isWin);
+        GamePlayII.Instance.Active_GamePlayII(pixels.Count, isWin);             
     }
 
     public void Restart()
@@ -316,7 +312,7 @@ public class GameController : MonoBehaviour
             Debug.Log(level);
             if (level < maxLevel)
             {
-                PlayerPrefs.SetInt("currentLevel", level);
+                DataManager.Instance.LevelGame = level;
                 SceneManager.LoadScene(0);
             }
         }
@@ -331,7 +327,7 @@ public class GameController : MonoBehaviour
         {
             currentLevel = 0;
         }
-        PlayerPrefs.SetInt("currentLevel", currentLevel);
+        DataManager.Instance.LevelGame = currentLevel;
         SceneManager.LoadScene(0);
     }
 
@@ -358,7 +354,7 @@ public class GameController : MonoBehaviour
         {
             other.GetComponent<Tile>().isCheck = false;
             other.GetComponent<Tile>().isMagnet = false;
-            other.transform.parent = null;
+            other.transform.parent = transform.parent;
             pixels.Remove(other.GetComponent<Rigidbody>());
         }
     }

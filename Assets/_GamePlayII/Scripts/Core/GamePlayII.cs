@@ -27,7 +27,7 @@ public class GamePlayII : MonoBehaviour
 
     private void Start()
     {
-        Hide_GamePlayII();
+        //Hide_GamePlayII();
     }
 
     private void Update()
@@ -54,6 +54,7 @@ public class GamePlayII : MonoBehaviour
         Refresh();
         mainObject.SetActive(false);
         completeUI.SetActive(false);
+        SceneManager.LoadScene(0);
     }
 
     private void Refresh()
@@ -77,8 +78,12 @@ public class GamePlayII : MonoBehaviour
     {
         if (_isWin)
         {
-           // phase_1.ResetData();
-           // phase_2.ResetData();
+            DataManager.Instance.PowerLevel = 1;
+            DataManager.Instance.SizeLevel = 1;
+            DataManager.Instance.TimerLevel = 1;
+            DataManager.Instance.LevelGame++;
+            // phase_1.ResetData();
+            // phase_2.ResetData();
         }
 
         string headText = _isWin ? "VICTORY" : "DEFEAT";

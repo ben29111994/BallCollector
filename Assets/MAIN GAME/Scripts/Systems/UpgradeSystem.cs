@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using System.Diagnostics;
 
 public class UpgradeSystem : MonoBehaviour
 {
@@ -77,7 +78,7 @@ public class UpgradeSystem : MonoBehaviour
         }
         else
         {
-            CountPrice *= 2;
+            CountPrice = BasePrice() * (Level() + 1);
             priceText.text = CountPrice.ToString(); 
         }
     }
@@ -128,7 +129,16 @@ public class UpgradeSystem : MonoBehaviour
 
     private int BasePrice()
     {
-        return (typeSystem == TypeSystem.Timer) ? 1000 : 200;
+            switch ((int)typeSystem)
+            {
+                case 0:
+                    return 100;
+                case 1:
+                    return 100;
+                case 2:
+                    return 100;
+            }
+            return 100;
     }
 
     private int Level()
@@ -138,9 +148,9 @@ public class UpgradeSystem : MonoBehaviour
             case 0:
                 return DataManager.Instance.TimerLevel;
             case 1:
-                return DataManager.Instance.PowerLevel;
-            case 2:
                 return DataManager.Instance.SizeLevel;
+            case 2:
+                return DataManager.Instance.PowerLevel;
         }
 
         return 0;
