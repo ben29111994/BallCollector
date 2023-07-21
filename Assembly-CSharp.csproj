@@ -347,6 +347,7 @@
     <Compile Include="Assets\Amazing Assets\Advanced Dissolve\Scripts\Core\AdvancedDissolveKeywords.cs" />
     <Compile Include="Assets\GPUInstancer\Demos\AddRuntimeCreatedGameObjects\Scripts\AddRuntimeCreatedGameObjects.cs" />
     <Compile Include="Assets\_GamePlayII\Tools\MeshAnimator\Scripts\Snapshot\SnapshotMeshAnimator.cs" />
+    <Compile Include="Assets\QuickOutline\Scripts\QuickOutline.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\Analytic\ClientWisdomManager.cs" />
     <Compile Include="Assets\GameAnalytics\Plugins\Scripts\Events\GA_Setup.cs" />
@@ -425,6 +426,7 @@
     <None Include="Assets\Resources\72.txt" />
     <None Include="Assets\Amazing Assets\Advanced Dissolve\Shaders\Built-in\Nature\SoftOcclusion\UnityBuiltin2xTreeLibrary.cginc" />
     <None Include="Assets\_GamePlayII\Tools\MeshAnimator\Shaders\MeshAnimator-Unlit-AlphaTest.shader" />
+    <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
     <None Include="Assets\VacuumShaders\Advanced Dissolve\Shaders\Nature\SpeedTree\SpeedTreeCommon.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
     <None Include="Assets\Resources\76.txt" />
@@ -509,6 +511,7 @@
     <None Include="Assets\Resources\81.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\QuickOutline\Readme.txt" />
     <None Include="Assets\Resources\57.txt" />
     <None Include="Assets\VacuumShaders\Advanced Dissolve\Shaders\TextMesh Pro\TMPro_Surface.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
@@ -601,6 +604,7 @@
     <None Include="Assets\Resources\82.txt" />
     <None Include="Assets\GPUInstancer\Resources\Compute\Include\DataModel.compute" />
     <None Include="Assets\_GamePlayII\Tools\MeshAnimator\Shaders\MeshAnimator-Mobile-BumpSpec.shader" />
+    <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
     <None Include="Assets\Resources\78.txt" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Resources\21.txt" />
