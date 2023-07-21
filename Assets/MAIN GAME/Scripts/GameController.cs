@@ -102,6 +102,8 @@ public class GameController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(transform.position.x, CameraOffsetY, transform.position.z - CameraOffsetZ), Time.deltaTime * 30);
+
         if (isPlaying)
         {
             timer -= Time.deltaTime;
@@ -154,8 +156,6 @@ public class GameController : MonoBehaviour
 
     private void Control()
     {
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(transform.position.x, CameraOffsetY, transform.position.z - CameraOffsetZ), Time.deltaTime * 30);
-
         if (Input.GetMouseButtonDown(0))
         {
             isHold = true;

@@ -82,8 +82,9 @@ public class OnCollected : MonoBehaviour
     public void UpgradeSize(int level)
     {
         var scaleValue = transform.parent.transform.parent.transform.localScale;
-        transform.parent.transform.parent.transform.DOScale(new Vector3(scaleValue.x + 0.15f * level, scaleValue.y + 0.15f * level, scaleValue.z + 0.15f * level), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        transform.parent.transform.parent.transform.DOPunchScale(transform.parent.transform.parent.transform.localScale * 0.4f, 0.5f, 3, 1).SetEase(Ease.Linear).OnComplete(() =>
         {
+            transform.parent.transform.parent.transform.DOScale(new Vector3(scaleValue.x + 0.25f * level, scaleValue.y + 0.25f * level, scaleValue.z + 0.25f * level), 0.2f);
             limit += 100 * level;
             isUpgrading = false;
         }); ;

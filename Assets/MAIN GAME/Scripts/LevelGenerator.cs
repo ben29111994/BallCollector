@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class LevelGenerator : MonoBehaviour {
 
@@ -88,9 +89,26 @@ public class LevelGenerator : MonoBehaviour {
         //var sizeValue = (level + 1) * 3;
         //Vector3 scale = Vector3.one * ratio * sizeValue * 0.1f;
         Vector3 scale = Vector3.one * Mathf.Pow(1.5f, level) / 10;
-        if (level < 3)
+        switch(level)
         {
-            scale = Vector3.one * Mathf.Pow(1.5f, level) / 5;
+            case 0:
+                scale = Vector3.one * Mathf.Pow(1.5f, level) / 4;
+                break;
+            case 1:
+                scale = Vector3.one * Mathf.Pow(1.5f, level) / 5;
+                break;
+            case 2:
+                scale = Vector3.one * Mathf.Pow(1.5f, level) / 6;
+                break;
+            case 3:
+                scale = Vector3.one * Mathf.Pow(1.5f, level) / 7;
+                break;
+            case 4:
+                scale = Vector3.one * Mathf.Pow(1.5f, level) / 8;
+                break;
+            default:
+                scale = Vector3.one * Mathf.Pow(1.5f, level) / 10;
+                break;
         }
 
         if (pixelColor.a == 0 || pixelColor == null)
