@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
-public class UpgradeSystem : GameController
+public class UpgradeSystem : MonoBehaviour
 {
     [Header("Count System")]
     public GameObject handAnim;
     public TypeSystem typeSystem;
-    private TextMeshProUGUI priceText;
-    private GameObject CountBlockImage;
+    public TextMeshProUGUI priceText;
+    public TextMeshProUGUI nameText;
+    public GameObject CountBlockImage;
     [SerializeField] private int countPrice;
     public int CountPrice
     {
@@ -26,21 +28,32 @@ public class UpgradeSystem : GameController
 
     public enum TypeSystem
     {
-        Count,
-        Fuel,
-        Power,
-        Size
+        Timer,
+        Size,
+        Power
     }
 
     private void Awake()
     {
-        priceText = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+        UpdatePrice();
+        switch ((int)typeSystem)
+        {
+            case 0:
+                nameText.text = "TIMER LVL." + DataManager.Instance.TimerLevel;
+                break;
+            case 1:
+                nameText.text = "SIZE LVL." + DataManager.Instance.SizeLevel;
+                break;
+            case 2:
+                nameText.text = "POWER LVL." + DataManager.Instance.PowerLevel;
+                break;
+        }
         CountBlockImage = transform.GetChild(5).gameObject;
     }
 
     private void Update()
     {
-        //UpdateBlock();
+        UpdateBlock();
     }
 
     private void UpdateBlock()
@@ -64,18 +77,19 @@ public class UpgradeSystem : GameController
         }
         else
         {
-            CountPrice = BasePrice() * (Level() + 1);
+            CountPrice *= 2;
+            priceText.text = CountPrice.ToString(); 
         }
     }
 
     private bool IsMax()
     {
-        if(typeSystem == TypeSystem.Count)
+        if(typeSystem == TypeSystem.Timer)
         {
             return false;
         }
 
-        return Level() >= 8 ? true : false;
+        return Level() >= 7 ? true : false;
     }
 
     public void OnClink_Buy()
@@ -87,33 +101,34 @@ public class UpgradeSystem : GameController
 
     public void UpgradeSucces()
     {
-        //switch ((int)typeSystem)
-        //{
-        //    case 0:
-        //        DataManager.Instance.CountLevel++;
-        //        SawController.Instance.SpawnSaw();
-        //        break;
-        //    case 1:
-        //        DataManager.Instance.FuelLevel++;
-        //        break;
-        //    case 2:
-        //        DataManager.Instance.PowerLevel++;
-        //        SawController.Instance.UpdateSawPower();
-        //        break;
-        //    case 3:
-        //        DataManager.Instance.SizeLevel++;
-        //        SawController.Instance.UpdateSawSize();
-        //        break;
-        //}
+        switch ((int)typeSystem)
+        {
+            case 0:
+                DataManager.Instance.TimerLevel++;
+                OnCollected.Instance.UpgradeTimer(1);
+                nameText.text = "TIMER LVL." + DataManager.Instance.TimerLevel;
+                break;
+            case 1:
+                DataManager.Instance.SizeLevel++;
+                OnCollected.Instance.UpgradeSize(1);
+                nameText.text = "SIZE LVL." + DataManager.Instance.SizeLevel;
+                break;
+            case 2:
+                DataManager.Instance.PowerLevel++;
+                OnCollected.Instance.UpgradePower(1);
+                nameText.text = "POWER LVL." + DataManager.Instance.PowerLevel;
+                break;
+        }
 
         HandAnim();
         UpdatePrice();
-        VibrationManager.Instance.Vibration();
+        transform.DOPunchScale(Vector3.one * 0.1f, 0.5f);
+        //VibrationManager.Instance.Vibration();
     }
 
     private int BasePrice()
     {
-        return (typeSystem == TypeSystem.Count) ? 1000 : 200;
+        return (typeSystem == TypeSystem.Timer) ? 1000 : 200;
     }
 
     private int Level()
@@ -122,8 +137,6 @@ public class UpgradeSystem : GameController
         {
             case 0:
                 return DataManager.Instance.TimerLevel;
-            //case 1:
-            //    return DataManager.Instance.FuelLevel;
             case 1:
                 return DataManager.Instance.PowerLevel;
             case 2:

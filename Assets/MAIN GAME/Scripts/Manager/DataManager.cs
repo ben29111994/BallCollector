@@ -11,8 +11,7 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance { get { return instance; } }
 
     [Header("References")]
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI coinText;
+    public Text coinText;
     public Animation coinAnim;
 
     public int TutorialIndex
@@ -36,7 +35,6 @@ public class DataManager : MonoBehaviour
         set
         {
             PlayerPrefs.SetInt("LevelGame",value);
-            levelText.text = "Lvl " + (value + 1);
         }
     }
 
@@ -50,7 +48,7 @@ public class DataManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coin", value);
             coinText.text = "" + CoinFixedText(value);
-            coinAnim.Play("CoinCollect",PlayMode.StopAll);
+            //coinAnim.Play("CoinCollect",PlayMode.StopAll);
         }
     }
 
@@ -58,7 +56,7 @@ public class DataManager : MonoBehaviour
     {
         get
         {
-            return PlayerPrefs.GetInt("TimerLevel");
+            return PlayerPrefs.GetInt("TimerLevel") == 0 ? 1: PlayerPrefs.GetInt("TimerLevel");
         }
         set
         {
@@ -66,23 +64,11 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    //public int FuelLevel
-    //{
-    //    get
-    //    {
-    //        return PlayerPrefs.GetInt("FuelLevel");
-    //    }
-    //    set
-    //    {
-    //        PlayerPrefs.SetInt("FuelLevel", value);
-    //    }
-    //}
-
     public int PowerLevel
     {
         get
         {
-            return PlayerPrefs.GetInt("PowerLevel");
+            return PlayerPrefs.GetInt("PowerLevel") == 0 ? 1 : PlayerPrefs.GetInt("PowerLevel");
         }
         set
         {
@@ -94,25 +80,13 @@ public class DataManager : MonoBehaviour
     {
         get
         {
-            return PlayerPrefs.GetInt("SizeLevel");
+            return PlayerPrefs.GetInt("SizeLevel") == 0 ? 1 : PlayerPrefs.GetInt("SizeLevel");
         }
         set
         {
             PlayerPrefs.SetInt("SizeLevel", value);
         }
     }
-
-    //public int BitmapLevel
-    //{
-    //    get
-    //    {
-    //        return PlayerPrefs.GetInt("BitmapLevel");
-    //    }
-    //    set
-    //    {
-    //        PlayerPrefs.SetInt("BitmapLevel", value);
-    //    }
-    //}
 
     private void Awake()
     {
@@ -123,15 +97,16 @@ public class DataManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.isRecord)
-        {
-            Coin += 0;
-        }
+        //if (GameManager.Instance.isRecord)
+        //{
+        //    Coin += 0;
+        //}
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) Coin += 9999999;
+        if (Input.GetKeyDown(KeyCode.R)) PlayerPrefs.DeleteAll();
     }
 
     public static string CoinFixedText(int number)

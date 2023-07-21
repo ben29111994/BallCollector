@@ -17,6 +17,8 @@ TagManager:
   - Hole Magnet
   - GPU
   - Rebuild
+  - Reward
+  - Human
   layers:
   - Default
   - TransparentFX
@@ -47,9 +49,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - BlueTeam
+  - RedTeam
+  - Background
   m_SortingLayers:
   - name: Default
     uniqueID: 0

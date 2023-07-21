@@ -31,6 +31,7 @@ public class HumanController : MonoBehaviour
 
     public int humanCount;
     private int blueTeamCount;
+    private int redTeamCount;
 
     [Header("References")]
     public Transform startPoint_blueTeam;
@@ -114,6 +115,9 @@ public class HumanController : MonoBehaviour
 
     private IEnumerator C_SpawnHumanRedTeam(eNameJob _nameJob)
     {
+        redTeamCount++;
+        if (GamePlayII.Instance.sureWin && redTeamCount % 3 == 0) yield break;
+
         int index = (int)_nameJob;
         float r = Random.value;
         if (r < 0.05f) index += 2;
@@ -127,12 +131,12 @@ public class HumanController : MonoBehaviour
         Vector3 startPosition = (_nameTeam == eNameTeam.Blue) ? startPoint_blueTeam.position : startPoint_redTeam.position;
         Transform targetCastle = (_nameTeam == eNameTeam.Blue) ? startPoint_redTeam : startPoint_blueTeam;
         human.Active(_nameJob, _nameTeam, startPosition, targetCastle);
-        listHuman_Red.Add(human);
 
         yield return new WaitForSeconds(0.5f);
 
-        if (blueTeamCount + 1 % 5 == 0 && GamePlayII.Instance.phase_1.IsMaxJob() == false)
+        if (listHuman_Red.Count % 4 == 0 && GamePlayII.Instance.phase_1.IsMaxJob() == false && !GamePlayII.Instance.sureWin)
         {
+            human = HumanPooling.Instance.GetObject(_nameJob);
             human.Active(_nameJob, _nameTeam, startPosition, targetCastle);
             listHuman_Red.Add(human);
         }

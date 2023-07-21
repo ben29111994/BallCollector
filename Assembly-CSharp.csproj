@@ -59,8 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GameAnalytics\Plugins\Scripts\ILRD\TopOn\GATopOnIntegration.cs" />
-    <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\_GamePlayII\Tools\MeshAnimator\Scripts\Common\Utilities\PooledDictionary.cs" />
+    <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\VacuumShaders\Advanced Dissolve\Example\ObjectSceneMove.cs" />
     <Compile Include="Assets\MAIN GAME\Scripts\Manager\ShakeManager.cs" />
     <Compile Include="Assets\GPUInstancer\Scripts\Core\DataModel\GPUInstancerRuntimeData.cs" />

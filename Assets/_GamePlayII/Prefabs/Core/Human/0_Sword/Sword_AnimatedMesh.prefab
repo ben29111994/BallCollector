@@ -60,7 +60,7 @@ MonoBehaviour:
   playAutomatically: 1
   resetOnEnable: 1
   eventReciever: {fileID: 0}
-  FPS: 120
+  FPS: 90
   skipLastLoopFrame: 0
   currentFrame: 0
   LODCamera: {fileID: 0}

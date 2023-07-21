@@ -56,11 +56,9 @@ public class GameManager : MonoBehaviour
     public void LevelUp()
     {
         DataManager.Instance.LevelGame++;
-        //DataManager.Instance.BitmapLevel++;
 
         if (!isRecord) DataManager.Instance.Coin = 0;
         DataManager.Instance.TimerLevel = 0;
-        //DataManager.Instance.FuelLevel = 0;
         DataManager.Instance.PowerLevel = 0;
         DataManager.Instance.SizeLevel = 0;
     }

@@ -6,10 +6,23 @@ using UnityEngine;
 
 public class OnCollected : MonoBehaviour
 {
+    public static OnCollected Instance;
+    //public static OnCollected Instance { get { return instance; } }
     public Transform spawnPos;
     public List<Rigidbody> listMaintainBalls = new List<Rigidbody>();
     public int limit = 100;
     bool isUpgrading = false;
+
+    private void Start()
+    {
+        Instance = this;
+        var levelTimer = DataManager.Instance.TimerLevel;
+        var levelSize = DataManager.Instance.SizeLevel;
+        var levelPower = DataManager.Instance.PowerLevel;
+        UpgradeTimer(levelTimer);
+        UpgradeSize(levelSize);
+        UpgradePower(levelPower);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,10 +32,11 @@ public class OnCollected : MonoBehaviour
             other.GetComponent<Tile>().isCheck = false;
             other.GetComponent<Tile>().isMagnet = false;
             other.transform.parent = transform.parent;
-            other.transform.DOLocalMove(spawnPos.localPosition, 0.1f);
+            other.transform.DOLocalMove(spawnPos.localPosition, 0.2f);
             other.GetComponent<SphereCollider>().isTrigger = false;
-            other.GetComponent<Rigidbody>().drag = 10;
-            other.transform.localScale /= 2;
+            other.GetComponent<Rigidbody>().drag = 20;
+            other.GetComponent<Rigidbody>().angularDrag = 20;
+            other.transform.localScale = new Vector3(14, 7, 14);
             //other.transform.DOScale(10f, 0.2f);
             listMaintainBalls.Add(other.GetComponent<Rigidbody>());
             if (listMaintainBalls.Count >= limit)
@@ -30,7 +44,9 @@ public class OnCollected : MonoBehaviour
                 if (!isUpgrading)
                 {
                     isUpgrading = true;
-                    Upgrade();
+                    UpgradeTimer(1);
+                    UpgradeSize(1);
+                    UpgradePower(1);
                 }
             }
         }
@@ -57,19 +73,26 @@ public class OnCollected : MonoBehaviour
         }
     }
 
-    void Upgrade()
+    public void UpgradeTimer(int level)
+    {
+        var value = level * 5;
+        GameController.Instance.UpdateTimer(value);
+    }
+
+    public void UpgradeSize(int level)
     {
         var scaleValue = transform.parent.transform.parent.transform.localScale;
-        transform.parent.transform.parent.transform.DOScale(new Vector3(scaleValue.x + 0.2f, scaleValue.y + 0.2f, scaleValue.z + 0.2f), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        transform.parent.transform.parent.transform.DOScale(new Vector3(scaleValue.x + 0.2f * level, scaleValue.y + 0.2f * level, scaleValue.z + 0.2f * level), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            limit += 200;
+            limit += 100 * level;
             isUpgrading = false;
         }); ;
-        //DOTween.To(() => Camera.main.fieldOfView, x => Camera.main.fieldOfView = x, Camera.main.fieldOfView * 1.05f, 1f);
-        DOTween.To(() => GameController.instance.CameraOffsetY, x => GameController.instance.CameraOffsetY = x, GameController.instance.CameraOffsetY * 1.05f, 0.5f);
-        DOTween.To(() => GameController.instance.CameraOffsetZ, x => GameController.instance.CameraOffsetZ = x, GameController.instance.CameraOffsetZ * 1.05f, 0.5f);
-        //GameController.instance.CameraOffsetY *= 1.1f;
-        //GameController.instance.CameraOffsetZ *= 1.1f;
-        GameController.instance.forceFactor += 5000;
+        DOTween.To(() => GameController.Instance.CameraOffsetY, x => GameController.Instance.CameraOffsetY = x, GameController.Instance.CameraOffsetY + 1.05f * level, 0.5f);
+        DOTween.To(() => GameController.Instance.CameraOffsetZ, x => GameController.Instance.CameraOffsetZ = x, GameController.Instance.CameraOffsetZ + 1.05f * level, 0.5f);
+    }
+
+    public void UpgradePower(int level)
+    {
+        GameController.Instance.forceFactor += 2000*level;
     }
 }

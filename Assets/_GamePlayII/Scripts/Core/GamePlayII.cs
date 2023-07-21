@@ -9,6 +9,8 @@ public class GamePlayII : MonoBehaviour
     public static GamePlayII Instance => instance;
     private static GamePlayII instance;
 
+    public bool sureWin;
+
     [Header("References")]
     public Phase_0 phase_0;
     public Phase_1 phase_1;
@@ -16,6 +18,7 @@ public class GamePlayII : MonoBehaviour
     public GameObject mainObject;
     public TextMeshProUGUI completeHeaderText;
     public GameObject completeUI;
+    public GameObject gameplay1;
 
     private void Awake()
     {
@@ -30,15 +33,17 @@ public class GamePlayII : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) phase_0.SpawnBall();
-        else if (Input.GetKeyDown(KeyCode.A)) Active_GamePlayII();
+        else if (Input.GetKeyDown(KeyCode.A)) Active_GamePlayII(20,true);
         //else if (Input.GetKeyDown(KeyCode.H)) Hide_GamePlayII();
         //else if (Input.GetKeyDown(KeyCode.B)) phase_0.AddBall(999);
         //else if (Input.GetKeyDown(KeyCode.D)) PlayerPrefs.DeleteAll();
     }
 
-    public void Active_GamePlayII()
+    public void Active_GamePlayII(int _ballCount,bool _sureWin)
     {
-        phase_0.AddBall(GetBallAmount());
+        gameplay1.SetActive(false);
+        sureWin = _sureWin;
+        phase_0.AddBall(_ballCount);
         phase_1.Update_Terrain();
         HumanController.Instance.SpawnStartRedTeam();
         mainObject.SetActive(true);
@@ -72,8 +77,8 @@ public class GamePlayII : MonoBehaviour
     {
         if (_isWin)
         {
-            phase_1.ResetData();
-            phase_2.ResetData();
+           // phase_1.ResetData();
+           // phase_2.ResetData();
         }
 
         string headText = _isWin ? "VICTORY" : "DEFEAT";

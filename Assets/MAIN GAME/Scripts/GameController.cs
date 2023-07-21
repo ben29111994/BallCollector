@@ -8,18 +8,18 @@ using MoreMountains.NiceVibrations;
 using UnityEngine.EventSystems;
 using GPUInstancer;
 using System.Linq;
-using AdvancedDissolve_Example;
 using AmazingAssets.AdvancedDissolve;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController Instance;
+
     [Header("Variable")]
-    public static GameController instance;
     public int maxLevel;
-    public bool isStartGame = false;
+    public bool isPlaying = false;
     int maxPlusEffect = 0;
     bool isVibrate = false;
-    Rigidbody rigid;
     float h, v;
     public float speed;
     Vector3 dir;
@@ -29,28 +29,27 @@ public class GameController : MonoBehaviour
     public static int totalPixel;
     public float rebuildHeight;
     public List<GameObject> listMeshs = new List<GameObject>();
-    float meshHeight;
-    float count;
-    bool isBuild = false;
     public float CameraOffsetY = 30, CameraOffsetZ = 20;
+    public int totalBall;
 
 
     [Header("UI")]
     public GameObject winPanel;
-    public GameObject losePanel;
     public Text currentLevelText;
     public Text nextLevelText;
     int currentLevel;
     public Slider levelProgress;
-    public Text scoreText;
-    public static int score;
+    public Text cointTxt;
+    public static int coin;
     public Canvas canvas;
     public GameObject startGameMenu;
     public InputField levelInput;
     public GameObject nextButton;
     public Text title;
     public Text winMenu_title;
-    public Text winMenu_score;
+    public Text winMenu_coin;
+    public TextMeshProUGUI timerTxt;
+    float timer;
 
     [Header("Objects")]
     public GameObject funnel;
@@ -63,14 +62,18 @@ public class GameController : MonoBehaviour
     public Transform magnetPoint;
     public GameObject winBG;
     public AdvancedDissolveGeometricCutoutController controllerCutOut;
+    public GameObject gameplay2;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void OnEnable()
     {
         //PlayerPrefs.DeleteAll();
         //DOTween.SetTweensCapacity(5000, 5000);
         Application.targetFrameRate = 60;
-        instance = this;
-        rigid = GetComponent<Rigidbody>();
         CameraOffsetY = Camera.main.transform.position.y;
         StartCoroutine(delayRefreshInstancer());
         StartCoroutine(delayStart());
@@ -80,34 +83,35 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
         //AnalyticsManager.instance.CallEvent(AnalyticsManager.EventType.StartEvent);
-
-        currentLevel = PlayerPrefs.GetInt("currentLevel");
+        currentLevel = DataManager.Instance.LevelGame;
         currentLevelText.text = currentLevel.ToString();
         nextLevelText.text = (currentLevel + 1).ToString();
-        score = 0;
-        scoreText.text = score.ToString();
+        coin = DataManager.Instance.Coin;
+        cointTxt.text = coin.ToString();
         startGameMenu.SetActive(true);
         title.DOColor(new Color32(255,255,255,0), 3);
         levelProgress.maxValue = totalPixel;
         levelProgress.value = 0;
     }
 
+    public void UpdateTimer(int bonusValue)
+    {
+        timer += bonusValue;
+        timerTxt.text = ((int)timer).ToString();
+    }
+
     private void FixedUpdate()
     {
-        if (isStartGame)
+        if (isPlaying)
         {
+            timer -= Time.deltaTime;
+            timerTxt.text = ((int)timer).ToString();
+            if(timer <= 0)
+            {
+                StartCoroutine(Win());
+            }
             Control();
-            //if (pixels.Count > 100)
-            //{
-            //    var pixel = pixels[0];
-            //    //pixels.Remove(pixels[50]);
-            //    //pixels.TrimExcess();
-            //    try
-            //    {
-            //        AddRemoveInstances.instance.RemoveInstances(pixel.GetComponent<GPUInstancerPrefab>());
-            //    }
-            //    catch { }
-            //}
+
             for (int i = 0; i < pixels.Count; i++)
             {
                 if (pixels[i] != null && pixels[i].GetComponent<Tile>().isCheck)
@@ -117,16 +121,19 @@ public class GameController : MonoBehaviour
                     float distance = Vector3.Distance(magnetPoint.transform.position, pixels[i].transform.position);
                     if (distance <= 2f)
                     {
-                        //if (dis <= 10 && !pixels[i].GetComponent<Tile>().isMagnet)
-                        //    {
-                        //        pixels[i].GetComponent<Tile>().isMagnet = true;
-                        //        pixels[i].transform.parent = funnel.transform;
-                        //    }
                         pixels[i].AddForce(magnetField * forceFactor * Time.fixedDeltaTime);
                     }
                     else
                     {
                         if (pixels[i].transform.localScale.x < transform.localScale.x / 5 || forceFactor > 7500)
+                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
+                        else if (pixels[i].transform.localScale.x < transform.localScale.x / 4 || forceFactor > 15000)
+                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
+                        else if (pixels[i].transform.localScale.x < transform.localScale.x / 3 || forceFactor > 20000)
+                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
+                        else if (pixels[i].transform.localScale.x < transform.localScale.x / 2 || forceFactor > 25000)
+                            pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
+                        else if (pixels[i].transform.localScale.x < transform.localScale.x || forceFactor > 30000)
                             pixels[i].AddForce(magnetField * forceFactor / distance * Time.fixedDeltaTime);
                         else
                         {
@@ -136,10 +143,6 @@ public class GameController : MonoBehaviour
 
                     }
                 }
-                //else
-                //{
-                //    break;
-                //}
             }
         }
     }
@@ -178,18 +181,13 @@ public class GameController : MonoBehaviour
                 h = 0;
             if (Mathf.Abs(v) <= 0.1f)
                 v = 0;
-            //Debug.Log(h + " " + v);
             dir = new Vector3(h, 0, v);
             if (dir != Vector3.zero)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 15 * Time.deltaTime);
-                //transform.rotation = Quaternion.LookRotation(dir);
             }
             transform.Translate(Vector3.forward * Time.deltaTime * (speed + Mathf.Abs(h) * 2 + Mathf.Abs(v) * 2));
-            //rigid.velocity = dir * 100 * Time.deltaTime;
-            //funnel.transform.position = Vector3.MoveTowards(funnel.transform.position, new Vector3(funnel.transform.position.x + h, funnel.transform.position.y, funnel.transform.position.z + v), speed * Time.deltaTime);
         }
-        //transform.position = new Vector3(Mathf.Clamp(transform.position.x, -11f, 11f), transform.position.y, Mathf.Clamp(transform.position.z, -4f, 49));
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -201,7 +199,7 @@ public class GameController : MonoBehaviour
     {
         if (maxPlusEffect < 10)
         {
-            Vector3 posSpawn = scoreText.transform.position;
+            Vector3 posSpawn = cointTxt.transform.position;
             StartCoroutine(PlusEffect(posSpawn));
         }
     }
@@ -223,7 +221,7 @@ public class GameController : MonoBehaviour
         plusVar.GetComponent<Text>().DOColor(new Color32(255, 255, 255, 0), 1f);
         plusVar.SetActive(true);
         plusVar.transform.DOMoveY(plusVar.transform.position.y + Random.Range(50, 90), 0.5f);
-        plusVar.transform.DOMoveX(scoreText.transform.position.x, 0.5f);
+        plusVar.transform.DOMoveX(cointTxt.transform.position.x, 0.5f);
         Destroy(plusVar, 0.5f);
         yield return new WaitForSeconds(0.01f);
         maxPlusEffect--;
@@ -246,59 +244,31 @@ public class GameController : MonoBehaviour
     public void ButtonStartGame()
     {
         startGameMenu.SetActive(false);
-        isStartGame = true;
+        isPlaying = true;
         isHold = true;
     }
 
     IEnumerator Win()
     {
-        var bomb = GameObject.FindGameObjectsWithTag("Hole");
-        var hole = GameObject.FindGameObjectsWithTag("Wall");
-        var wall = GameObject.FindGameObjectsWithTag("Wall");
-        if(bomb.Length > 0)
-        {
-            foreach(var item in bomb)
-            {
-                Destroy(item);
-            }
-        }
-        if (hole.Length > 0)
-        {
-            foreach (var item in hole)
-            {
-                Destroy(item);
-            }
-        }
-        if (wall.Length > 0)
-        {
-            foreach (var item in wall)
-            {
-                Destroy(item);
-            }
-        }
-        controllerCutOut.xyzPivotPointTransform.position = new Vector3(0,200,0);
         yield return new WaitForSeconds(0.01f);
-        if (isStartGame)
+        if (isPlaying)
         {
             //AnalyticsManager.instance.CallEvent(AnalyticsManager.EventType.EndEvent);
-            isStartGame = false;
-            losePanel.SetActive(false);
+            isPlaying = false;
             conffetiSpawn = Instantiate(conffeti);
             winMenu_title.text = "LEVEL " + currentLevel.ToString();
-            currentLevel++;
-            if (currentLevel > maxLevel)
-            {
-                currentLevel = 0;
-            }
-            PlayerPrefs.SetInt("currentLevel", currentLevel);
-            winMenu_score.text = score.ToString();
+            winMenu_coin.text = coin.ToString();
             yield return new WaitForSeconds(0.1f);
             winBG.SetActive(true);
             winBG.GetComponent<MeshRenderer>().material.DOFade(1, 1);
+            conffetiSpawn.transform.parent = Camera.main.transform;
+            conffetiSpawn.transform.localPosition = winBG.transform.localPosition;
             winPanel.SetActive(true);
-            scoreText.gameObject.SetActive(false);
+            //cointTxt.gameObject.SetActive(false);
             levelProgress.gameObject.SetActive(false);
-            //MapFlowEffect.instance.RunMapFlowEffect();
+            winMenu_coin.DOCounter(pixels.Count, 0, 1.5f);
+            var bonusCoin = coin + pixels.Count * 10;
+            cointTxt.DOCounter(coin, bonusCoin, 1.5f);
         }
     }
 
@@ -308,30 +278,29 @@ public class GameController : MonoBehaviour
         AddRemoveInstances.instance.Setup();
     }
 
-    public void Lose()
+    public void LoadGamePlay2()
     {
-        if (isStartGame)
-        {
-            //AnalyticsManager.instance.CallEvent(AnalyticsManager.EventType.EndEvent);
-            isStartGame = false;
-            StartCoroutine(delayLose());
-        }
-    }
-
-    IEnumerator delayLose()
-    {
-        yield return new WaitForSeconds(1);
-        losePanel.SetActive(true);
-    }
-
-    public void LoadScene()
-    {
-        //MapFlowEffect.instance.isStop = true;
         winPanel.SetActive(false);
-        losePanel.SetActive(false);
         var temp = conffetiSpawn;
         Destroy(temp);
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        gameplay2.SetActive(true);
+        bool isWin = false;
+        totalBall = LevelGenerator.Instance.totalBall;
+        var collectedPercentage = pixels.Count * 100 / totalBall;
+        Debug.LogError(collectedPercentage);
+        if(collectedPercentage > 10)
+        {
+            isWin = true;
+            currentLevel++;
+            if (currentLevel > maxLevel)
+            {
+                currentLevel = 0;
+            }
+            PlayerPrefs.SetInt("currentLevel", currentLevel);
+        }
+
+        GamePlayII.Instance.Active_GamePlayII(pixels.Count, isWin);
     }
 
     public void Restart()
@@ -356,7 +325,7 @@ public class GameController : MonoBehaviour
     public void ButtonNextLevel()
     {
         title.DOKill();
-        isStartGame = true;
+        isPlaying = true;
         currentLevel++;
         if (currentLevel > maxLevel)
         {
@@ -368,7 +337,7 @@ public class GameController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pixel") && !other.GetComponent<Tile>().isCheck && isStartGame && !other.GetComponent<Tile>().isMagnet)
+        if (other.gameObject.CompareTag("Pixel") && !other.GetComponent<Tile>().isCheck && isPlaying && !other.GetComponent<Tile>().isMagnet)
         {
             pixels.RemoveAll(item => item == null);
             if (!UnityEngine.iOS.Device.generation.ToString().Contains("5") && !isVibrate)
@@ -378,32 +347,14 @@ public class GameController : MonoBehaviour
                     MMVibrationManager.Haptic(HapticTypes.LightImpact);
                 }
                 other.GetComponent<Tile>().isCheck = true;
-            //other.transform.parent = null;
-            //other.GetComponent<Rigidbody>().isKinematic = false;
-            //if (other.transform.childCount == 0)
-            //{
-            //other.GetComponent<SphereCollider>().isTrigger = true;
 
-            //other.transform.DOKill();
-            //other.GetComponent<Tile>().isMagnet = true;
-            //other.transform.parent = transform;
-            //other.transform.DOMoveY(0.5f, 0);
-            //other.transform.DOLocalMove(new Vector3(0, 2f, 0), 0f);
-            //other.transform.DOLocalMove(new Vector3(0, 2f, 0), 0f).OnComplete(() => other.GetComponent<Tile>().isMagnet = true);
-            //other.transform.parent = null;
-            //}
-            //if(other.transform.localScale.x < 0.75f || forceFactor > 7500)
             pixels.Add(other.GetComponent<Rigidbody>());
-            //else
-            //    other.transform.DOMoveY(1f, 0.1f);
-            //}
-            //}
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Pixel") && other.GetComponent<Tile>().isCheck && isStartGame /*&& !other.GetComponent<Tile>().isMagnet*/)
+        if (other.gameObject.CompareTag("Pixel") && other.GetComponent<Tile>().isCheck && isPlaying)
         {
             other.GetComponent<Tile>().isCheck = false;
             other.GetComponent<Tile>().isMagnet = false;

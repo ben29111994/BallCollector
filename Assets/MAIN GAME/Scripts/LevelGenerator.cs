@@ -3,21 +3,27 @@ using System.Collections.Generic;
 
 public class LevelGenerator : MonoBehaviour {
 
-    public static LevelGenerator instance;
+    public static LevelGenerator Instance;
     public List<Texture2D> list2DMaps = new List<Texture2D>();
     public List<Color32> listColors = new List<Color32>();
     public Texture2D map;
     public Tile tilePrefab;
     public GameObject parentObject;
     public int numOfStacks;
+    public int totalBall;
     Transform currentParent;
     Vector3 originalPos;
     float width;
 
     void OnEnable()
     {
-        instance = this;
+        Instance = this;
         var currentLevel = PlayerPrefs.GetInt("currentLevel");
+        if(currentLevel > list2DMaps.Count)
+        {
+            currentLevel = 0;
+            PlayerPrefs.SetInt("currentLevel", currentLevel);
+        }
         map = list2DMaps[currentLevel];
         originalPos = parentObject.transform.position;
         currentParent = parentObject.transform;
@@ -53,6 +59,7 @@ public class LevelGenerator : MonoBehaviour {
         {
             for (int y = 0; y < texture.height - 1; y++)
             {
+                totalBall++;
                 GenerateTile(texture, x, y, ratio);
             }
         }
@@ -79,7 +86,7 @@ public class LevelGenerator : MonoBehaviour {
         //var sizeValue = Random.Range(0.5f, 1);
         //var sizeValue = (level + 1) * 3;
         //Vector3 scale = Vector3.one * ratio * sizeValue * 0.1f;
-        Vector3 scale = Vector3.one * Mathf.Pow(1.5f, level) / 8;
+        Vector3 scale = Vector3.one * Mathf.Pow(1.5f, level) / 10;
 
         if (pixelColor.a == 0 || pixelColor == null)
         {

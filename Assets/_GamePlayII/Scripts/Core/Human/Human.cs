@@ -106,6 +106,7 @@ public class Human : MonoBehaviour
         targetCastle = _targetCastle;
         isNearCastle = false;
         isKnockBack = false;
+        isTakeDamage = false;
         collider.enabled = true;
 
         SetJob(_nameJob);
@@ -124,8 +125,10 @@ public class Human : MonoBehaviour
     private void SetHealth()
     {
         health = 2 + (int)nameJob * 2;
-        if (HumanController.Instance.listHuman_Blue.Count - HumanController.Instance.listHuman_Red.Count > 5) health++;
-        if (GamePlayII.Instance.phase_1.IsMaxJob() && nameTeam == eNameTeam.Red) health = (int)(health * 0.6f);
+        if (HumanController.Instance.listHuman_Blue.Count - HumanController.Instance.listHuman_Red.Count > 3 !&& GamePlayII.Instance.sureWin) health += 2;
+       // if (GamePlayII.Instance.phase_1.IsMaxJob() && nameTeam == eNameTeam.Red) health = (int)(health * 0.6f);
+        if(nameTeam == eNameTeam.Red && GamePlayII.Instance.sureWin) health = (int)(health * 0.6f);
+        
     }
 
     private void PlayAnimation(eNameAnimation nameAnimation)
