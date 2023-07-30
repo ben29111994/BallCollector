@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
     public Text winMenu_title;
     public Text winMenu_coin;
     public TextMeshProUGUI timerTxt;
+    public GameObject upgradeMenu;
     float timer;
 
     [Header("Objects")]
@@ -58,7 +59,6 @@ public class GameController : MonoBehaviour
     GameObject conffetiSpawn;
     public GameObject mapReader;
     public GameObject map;
-    public GameObject mapFlowEffect;
     public Transform magnetPoint;
     public GameObject winBG;
     public GameObject gemAnim;
@@ -265,6 +265,8 @@ public class GameController : MonoBehaviour
             //cointTxt.gameObject.SetActive(false);
             timerTxt.gameObject.SetActive(false);
             levelProgress.gameObject.SetActive(false);
+            upgradeMenu.SetActive(false);
+            funnel.GetComponent<QuickOutline>().enabled = false;
             winMenu_coin.text = (pixels.Count).ToString();
             coinEarn = pixels.Count * 10;
             gemAnim.SetActive(true);
